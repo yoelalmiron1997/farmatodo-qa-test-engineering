@@ -2,9 +2,12 @@
 
 Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta como un framework de calidad: la especificación va primero, las pruebas están aisladas y priorizadas por riesgo, GitHub Actions las ejecuta y publica un portal con trazabilidad, flaky tests y performance.
 
-<!-- Los badges se agregan cuando el repositorio público exista y sus workflows hayan corrido: un badge sin ejecuciones reales aparentaría un estado no comprobado. -->
+[![pr-checks](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml)
+[![functional-tests](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml)
+[![deploy-pages](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/deploy-pages.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/deploy-pages.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- **Portal de calidad:** `https://<usuario>.github.io/<repositorio>/` (GitHub Pages; la URL exacta la publica el workflow `deploy-pages`)
+- **Portal de calidad:** https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/
 - **Especificación (SDD):** [`specs/SDD.md`](specs/SDD.md) · casos en [`specs/cases/`](specs/cases/) · requisitos en [`specs/requirements/requirements.yaml`](specs/requirements/requirements.yaml)
 
 ## Los cuatro ejercicios
@@ -42,8 +45,8 @@ Python 3.12 · [uv](https://docs.astral.sh/uv/) (lockfile) · Selenium 4 (Seleni
 Requisitos: [uv](https://docs.astral.sh/uv/getting-started/installation/) y, para las pruebas de UI, Google Chrome (Selenium Manager descarga el driver compatible).
 
 ```bash
-git clone https://github.com/<usuario>/<repositorio>.git
-cd <repositorio>
+git clone https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering.git
+cd farmatodo-qa-test-engineering
 uv sync --group dev            # crea .venv con Python 3.12 y las versiones del lockfile
 ```
 

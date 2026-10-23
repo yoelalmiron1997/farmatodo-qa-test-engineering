@@ -3,6 +3,8 @@
 name: functional-tests
 
 on:
+  # Nota: en el primer push de una rama nueva GitHub puede omitir workflows con filtros de rutas;
+  # el workflow queda registrado recién en su primer disparo (después admite ejecución manual).
   push:
     branches: [master]
     paths-ignore: ["docs/**", "**.md"]
