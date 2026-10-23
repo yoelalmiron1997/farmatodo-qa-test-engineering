@@ -15,5 +15,6 @@ Entrega de la prueba técnica de Ingeniero de Calidad QA para Farmatodo.
 - Clasificación de flaky tests, estado BLOCKED, quality gate declarativo e historial de ejecuciones en la rama `qa-history`.
 - Portal de calidad en GitHub Pages y CI/CD con GitHub Actions.
 - Reproducibilidad: Python 3.12.3 fijado, dependencias en `uv.lock`, versión de navegador fijable con `QA_BROWSER_VERSION` y workflow `release` que congela el ambiente en `environment.json`.
+- Imagen Docker del ambiente congelado publicada en GitHub Packages (`ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering`).
 
 [1.0.0]: https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/releases/tag/v1.0.0

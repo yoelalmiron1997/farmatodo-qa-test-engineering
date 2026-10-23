@@ -112,9 +112,10 @@ Las versiones son las del lockfile (`uv.lock`): local y CI usan exactamente las 
 | Portal y reportes | [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) | 9.7 | Portal de calidad generado desde las specs y el historial |
 | | [Mermaid](https://mermaid.js.org/) · [Chart.js](https://www.chartjs.org/) | — · 4.4 | Diagramas de arquitectura y gráficos de tendencia en el portal |
 | | Chrome headless | — | Imprime el reporte resumen a PDF en CI |
-| CI/CD | [GitHub Actions](https://docs.github.com/actions) | — | Siete workflows con acciones fijadas por SHA y permisos mínimos |
+| CI/CD | [GitHub Actions](https://docs.github.com/actions) | — | Ocho workflows con acciones fijadas por SHA y permisos mínimos |
 | | [GitHub Pages](https://pages.github.com/) | — | Publica el portal |
-| | [Dependabot](https://docs.github.com/code-security/dependabot) | — | Propone actualizaciones de dependencias y acciones |
+| | [Docker](https://www.docker.com/) · [GitHub Packages](https://docs.github.com/packages) | — | Imagen del ambiente congelado (`ghcr.io`) para reproducir cualquier versión |
+| [Dependabot](https://docs.github.com/code-security/dependabot) | — | Propone actualizaciones de dependencias y acciones |
 
 ## Instalación
 
@@ -194,8 +195,17 @@ Cada versión entregada se congela como un [release de GitHub](https://github.co
 | Python | Versión exacta en `.python-version` (3.12.3) |
 | Dependencias | `uv.lock` con hashes; en el release también como `requirements.lock.txt` |
 | Navegador y driver | Versión registrada en cada resultado; se reproduce con `QA_BROWSER_VERSION=<versión>`, que hace que Selenium Manager descargue esa versión exacta de Chrome for Testing |
+| Ambiente completo | Imagen Docker en [GitHub Packages](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/pkgs/container/farmatodo-qa-test-engineering) con Python, dependencias, Chrome y chromedriver exactos |
 | Runner y herramientas | Imagen fija (`ubuntu-24.04`), uv fijado y acciones fijadas por SHA, todo registrado en `environment.json` |
 | Evidencia | PDF de la respuesta, reporte de la corrida de validación y reportes completos adjuntos al release |
+
+Ejecutar la versión entregada sin instalar nada más que Docker:
+
+```bash
+docker run --rm ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering:1.0.0                  # E2E + reporte resumen
+docker run --rm ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering:1.0.0 pytest           # unit + integración
+docker run --rm -v "$PWD/reports:/app/reports" ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering:1.0.0   # reportes en tu carpeta
+```
 
 Cada release incluye en sus notas los comandos exactos para reproducirlo. Para publicar una versión nueva: actualizar `version` en `pyproject.toml`, agregar `release-notes/vX.Y.Z.md` y la entrada en [`CHANGELOG.md`](CHANGELOG.md), y subir el tag.
 
@@ -208,6 +218,7 @@ Cada release incluye en sus notas los comandos exactos para reproducirlo. Para p
 | `performance` | semanal y manual | Mediciones P2 secuenciales. Persiste el historial |
 | `deploy-pages` | cambios en docs o specs, fin de las corridas anteriores, manual | Genera el portal desde specs + `qa-history` y lo publica en GitHub Pages |
 | `release` | tag `vX.Y.Z` | Valida todo (estático, unit, integración, E2E) y, si el gate no bloquea, publica el release con los PDF, el paquete, las dependencias exactas, los reportes y `environment.json` |
+| `container` | push a `master`, PR que tocan el ambiente y tags | Construye la imagen Docker y la prueba (algoritmo, unit + integración y E2E dentro del contenedor). Con un tag la publica en GitHub Packages |
 | `sync-develop` | push a `master` | Avanza `develop` hasta `master` (o hace merge si divergió; nunca fuerza) |
 | `persist-history` | reutilizable | Agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
 

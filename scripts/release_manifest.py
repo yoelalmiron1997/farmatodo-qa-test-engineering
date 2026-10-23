@@ -120,6 +120,16 @@ El detalle completo (todas las dependencias con su versión y el sha256 de cada 
 
 ## Cómo reproducir esta versión
 
+**Con Docker** (todo congelado en la imagen, incluido Chrome; publicada en GitHub Packages):
+
+```bash
+docker run --rm ghcr.io/{REPO}:{tag.removeprefix("v")}                      # E2E + reporte resumen
+docker run --rm ghcr.io/{REPO}:{tag.removeprefix("v")} pytest               # unit + integración
+docker run --rm ghcr.io/{REPO}:{tag.removeprefix("v")} word-frequency data/samples/farmatodo_example.txt
+```
+
+**Sin Docker:**
+
 ```bash
 git clone https://github.com/{REPO}.git
 cd {REPO.split("/")[1]}
