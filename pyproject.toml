@@ -21,7 +21,7 @@ word-frequency = "farmatodo_qa.word_frequency.cli:main"
 
 [dependency-groups]
 dev = [
-    "pytest>=8.3,<9",
+    "pytest>=8.3,<10",
     "pytest-rerunfailures>=14,<17",
     "pytest-randomly>=3.15",
     "pytest-socket>=0.7",
