@@ -8,6 +8,7 @@ Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta como un f
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 - **Portal de calidad:** https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/
+- **Respuesta completa en PDF (los 4 ejercicios, punto por punto):** [`entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf`](entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf)
 - **Especificación (SDD):** [`specs/SDD.md`](specs/SDD.md) · casos en [`specs/cases/`](specs/cases/) · requisitos en [`specs/requirements/requirements.yaml`](specs/requirements/requirements.yaml)
 
 ## Los cuatro ejercicios

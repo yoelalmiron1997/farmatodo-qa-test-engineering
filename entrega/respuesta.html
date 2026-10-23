@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba técnica — Ingeniero de Calidad QA — Farmatodo — Yoel Almirón</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  :root { --ink:#1b2430; --muted:#5b6675; --line:#d9dee5; --brand:#0b4ea2; --soft:#f3f6fa; --ok:#1d7a3e; --warn:#a15c00; --bad:#b3261e; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--ink); font-size: 10.3pt; line-height: 1.45; margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 4mm; color: var(--brand); line-height: 1.15; }
+  h2 { font-size: 15pt; color: var(--brand); margin: 0 0 3mm; padding-bottom: 1.5mm; border-bottom: 2px solid var(--brand); }
+  h3 { font-size: 11.5pt; margin: 5mm 0 1.5mm; }
+  h3, h4 { break-after: avoid; }
+  pre.nowrap { white-space: pre; font-size: 7.4pt; }
+  h4 { font-size: 10.5pt; margin: 3mm 0 1mm; }
+  p { margin: 0 0 2mm; }
+  ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: .8mm; }
+  a { color: var(--brand); text-decoration: none; }
+  code, pre { font-family: "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; font-size: 8.8pt; }
+  code { background: var(--soft); padding: 0 1mm; border-radius: 1mm; }
+  pre { background: var(--soft); border: 1px solid var(--line); border-radius: 1.5mm; padding: 2.5mm 3mm; margin: 0 0 2.5mm; white-space: pre-wrap; break-inside: avoid; }
+  table { border-collapse: collapse; width: 100%; margin: 0 0 3mm; font-size: 9.2pt; break-inside: auto; }
+  th, td { border: 1px solid var(--line); padding: 1.2mm 1.8mm; vertical-align: top; text-align: left; }
+  th { background: var(--soft); font-weight: 600; }
+  tr { break-inside: avoid; }
+  td:first-child { white-space: nowrap; }
+  .cover td:first-child, .cover .links td:first-child { white-space: normal; }
+  .finding.flow { break-inside: auto; }
+  .section { break-before: page; }
+  .muted { color: var(--muted); }
+  .tag { display: inline-block; padding: .2mm 1.6mm; border-radius: 2mm; font-size: 8.4pt; font-weight: 600; }
+  .pass { background: #e3f3e8; color: var(--ok); }
+  .fail { background: #fbe6e4; color: var(--bad); }
+  .warn { background: #fdf0dc; color: var(--warn); }
+  .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2mm; margin: 2mm 0 3mm; }
+  .kpi { border: 1px solid var(--line); border-radius: 1.5mm; padding: 2mm; text-align: center; }
+  .kpi b { display: block; font-size: 15pt; }
+  .kpi span { font-size: 8.2pt; color: var(--muted); }
+  .box { border-left: 3px solid var(--brand); background: var(--soft); padding: 2mm 3mm; margin: 0 0 3mm; break-inside: avoid; }
+  .finding { break-inside: avoid; border: 1px solid var(--line); border-radius: 2mm; padding: 3mm; margin: 0 0 4mm; }
+  .finding h3 { margin-top: 0; }
+  .meta { font-size: 9pt; color: var(--muted); margin-bottom: 2mm; }
+  .twocol { display: grid; grid-template-columns: 1fr 62mm; gap: 4mm; align-items: start; }
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; margin: 1mm 0 2mm; }
+  .shots.two { grid-template-columns: repeat(2, 1fr); }
+  figure { margin: 0; }
+  figure img { width: 100%; border: 1px solid var(--line); border-radius: 1mm; display: block; }
+  figcaption { font-size: 7.8pt; color: var(--muted); margin-top: .8mm; }
+  .cover { height: 255mm; display: flex; flex-direction: column; }
+  .cover .eyebrow { font-size: 10pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 18mm; }
+  .cover .who { font-size: 12pt; margin-bottom: 8mm; }
+  .cover .links td:first-child { width: 38mm; font-weight: 600; }
+  .cover .bottom { margin-top: auto; font-size: 8.8pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ PORTADA -->
+<div class="cover">
+  <div class="eyebrow">Prueba técnica · Ingeniero de Calidad QA</div>
+  <h1>Farmatodo — Respuesta completa a los cuatro ejercicios</h1>
+  <div class="who"><b>Yoel Almirón</b> · 23 de octubre de 2026</div>
+
+  <table class="links">
+    <tr><td>Repositorio</td><td><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering">github.com/yoelalmiron1997/farmatodo-qa-test-engineering</a></td></tr>
+    <tr><td>Portal de calidad</td><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/">yoelalmiron1997.github.io/farmatodo-qa-test-engineering</a> (resultados reales de cada corrida)</td></tr>
+    <tr><td>Ejecuciones</td><td><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml">GitHub Actions → functional-tests</a> (reporte resumen y evidencias por corrida)</td></tr>
+  </table>
+
+  <h3>Resumen de la entrega</h3>
+  <table>
+    <tr><th style="width:8mm">#</th><th style="width:52mm">Ejercicio</th><th>Respuesta</th><th style="width:12mm">Pág.</th></tr>
+    <tr><td>1</td><td>Suite automatizada de wordcounter.net + reporte resumen</td><td>Selenium + Pytest con Page Object Model. 20 casos E2E validan palabras, caracteres y top 3 de Keyword Density contra un oráculo independiente. Última corrida en CI: <b>16/16 casos funcionales en PASS</b>, 0 flaky; los 4 FAIL son los defectos del Ej. 2, reproducidos a propósito.</td><td>2</td></tr>
+    <tr><td>2</td><td>Reporte de fallas de WordCounter</td><td><b>4 defectos confirmados</b> (1 mayor, 3 menores) y 2 oportunidades de mejora, con pasos, resultado esperado/actual y evidencia.</td><td>4</td></tr>
+    <tr><td>3</td><td>3 problemas de UX en Farmatodo</td><td><b>3 hallazgos</b> con vista, pasos para replicar, evidencia y propuesta. El más grave: entre 768 y 991 px el detalle de producto no muestra precio ni botón de compra.</td><td>7</td></tr>
+    <tr><td>4</td><td>Contador de frecuencia de palabras</td><td>Algoritmo propio en Python (solo biblioteca estándar). Salida <b>idéntica</b> al ejemplo del PDF. Complejidad O(N + U log U) en tiempo y O(U + L) en espacio.</td><td>10</td></tr>
+  </table>
+
+  <div class="box">
+    <b>Cómo está resuelto.</b> Cada caso de prueba se especificó primero (requisito, riesgo, prioridad P0/P1/P2, pasos y resultado esperado) y después se automatizó. GitHub Actions ejecuta todo en cada cambio, guarda el historial de corridas y publica el portal. Los tests que fallan y luego pasan se marcan como <i>flaky</i>, nunca como aprobados, y una caída del sitio se registra como <i>BLOCKED</i>, no como fallo.
+  </div>
+
+  <div class="bottom">Todo lo que muestra este documento está en el repositorio: código, especificaciones (<code>specs/</code>), capturas (<code>docs/assets/</code>) y el historial de ejecuciones (rama <code>qa-history</code>).</div>
+</div>
+
+<!-- ============================================================ EJERCICIO 1 -->
+<div class="section">
+  <h2>Ejercicio 1 — Suite automatizada de wordcounter.net</h2>
+
+  <h3>Qué valida</h3>
+  <p>Los tres objetivos del enunciado, cada uno con un caso P0 y casos de borde:</p>
+  <ol>
+    <li><b>Conteo de palabras</b> (contador del panel <i>Details</i> y encabezado).</li>
+    <li><b>Conteo de caracteres</b>.</li>
+    <li><b>Top 3 de Keyword Density</b>: palabra y cantidad de ocurrencias, en orden.</li>
+  </ol>
+
+  <h3>Cómo está construida</h3>
+  <ul>
+    <li><b>Selenium WebDriver + Pytest</b>, Chrome headless en CI. Selenium Manager resuelve el driver.</li>
+    <li><b>Page Object Model</b>: <code>WordCounterPage</code> y <code>KeywordDensityPanel</code> encapsulan localizadores y acciones, sin aserciones. Los valores del panel se leen en una sola llamada para evitar lecturas a medio redibujar.</li>
+    <li><b>Oráculo independiente</b>: el resultado esperado se calcula desde el texto de entrada con las reglas del sitio (relevadas en un spike de 42 observaciones reales), nunca copiando lo que muestra la página.</li>
+    <li><b>Aislamiento</b>: navegador y perfil nuevos por test, orden aleatorio y esperas explícitas (sin <code>sleep</code>).</li>
+    <li><b>Robustez</b>: hasta 2 reintentos en E2E; si pasa al reintentar queda <i>FLAKY</i>. Si el sitio no responde, <i>BLOCKED</i>. Cada fallo guarda captura y DOM.</li>
+  </ul>
+
+  <h3>Casos y resultado de la última corrida en CI</h3>
+  <p class="muted">functional-tests #39992999223 · 2026-10-23 17:11 UTC · Ubuntu 24.04 · Chrome 155 headless · Python 3.12 · Selenium 4.51</p>
+  <table>
+    <tr><th style="width:20mm">Caso</th><th>Escenario</th><th style="width:11mm">Prio.</th><th style="width:16mm">Resultado</th></tr>
+    <tr><td>TC-WC-001</td><td>Conteo básico de palabras</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-002</td><td>Conteo básico de caracteres</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-003</td><td>Top 3 de Keyword Density sin empates</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-004</td><td>Texto de ejemplo del PDF en WordCounter</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-005</td><td>Espacios adicionales, iniciales y finales</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-006</td><td>Signos de puntuación</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-007</td><td>Mayúsculas y minúsculas en Keyword Density</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-008</td><td>Actualización del contenido</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-009</td><td>Borrado total del texto</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-010</td><td>Texto multilínea</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-011</td><td>Empates en el top 3 de Keyword Density</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-012</td><td>Acentos y ñ (texto en español)</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-013</td><td>Números, guiones y apóstrofes</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-014</td><td>Texto extenso</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-015</td><td>Keyword Density con <i>stop words</i></td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-016</td><td>Emojis y caracteres fuera del BMP</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td>TC-WC-017</td><td>Reproducción BUG-WC-001: punto sin espacio</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td>TC-WC-018</td><td>Reproducción BUG-WC-002: palabra formada solo por guiones</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td>TC-WC-019</td><td>Reproducción BUG-WC-003: espacio no separable</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td>TC-WC-020</td><td>Reproducción BUG-WC-004: emojis en caracteres</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+  </table>
+  <p class="muted">TC-WC-017…020 describen el comportamiento correcto y fallan mientras el defecto exista. Cuando WordCounter los corrija, pasarán solos.</p>
+
+  <h3>Reporte resumen</h3>
+  <p>Cada corrida genera el reporte en la página de la ejecución de GitHub Actions y en el artifact <code>functional-reports</code> (PDF, HTML y Markdown, con capturas y DOM de cada fallo). Corrida completa (43 casos: 20 E2E + algoritmo y framework):</p>
+  <div class="kpis">
+    <div class="kpi"><b>43</b><span>Ejecutados</span></div>
+    <div class="kpi"><b style="color:var(--ok)">39</b><span>Aprobados</span></div>
+    <div class="kpi"><b>0</b><span>Flaky</span></div>
+    <div class="kpi"><b style="color:var(--bad)">4</b><span>Fallidos (conocidos)</span></div>
+    <div class="kpi"><b>0</b><span>Omitidos</span></div>
+    <div class="kpi"><b>0</b><span>Bloqueados</span></div>
+  </div>
+  <table>
+    <tr><th style="width:20mm">Caso</th><th style="width:20mm">Categoría</th><th>Descripción del error</th></tr>
+    <tr><td>TC-WC-017</td><td>assertion</td><td>Keyword Density lista 2 entradas para <code>hola.mundo</code>, pero el contador indica 1 palabra (BUG-WC-001)</td></tr>
+    <tr><td>TC-WC-018</td><td>assertion</td><td><code>---</code> aparece en Keyword Density con 0 palabras contadas (BUG-WC-002)</td></tr>
+    <tr><td>TC-WC-019</td><td>assertion</td><td>Keyword Density muestra <code>uno dos</code> como una sola entrada cuando el espacio es NBSP (BUG-WC-003)</td></tr>
+    <tr><td>TC-WC-020</td><td>assertion</td><td>16 caracteres en lugar de 14: cada emoji suma 2 (BUG-WC-004)</td></tr>
+  </table>
+  <p><b>Quality gate: WARN.</b> Los cuatro fallos son defectos conocidos y documentados, así que el pipeline no se bloquea pero los deja visibles. Un fallo nuevo en un P0, o un P0 flaky, sí bloquearía.</p>
+
+  <h3>Cómo ejecutarla</h3>
+<pre>git clone https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering.git
+cd farmatodo-qa-test-engineering
+uv sync --group dev
+uv run pytest tests/e2e --reruns 2 --qa-results-dir reports
+uv run qa results build --results-dir reports --out reports/run-result.json
+uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
+</div>
+
+<!-- ============================================================ EJERCICIO 2 -->
+<div class="section">
+  <h2>Ejercicio 2 — Reporte de fallas de wordcounter.net</h2>
+  <p>Exploración funcional guiada por charters, sobre la configuración por defecto. Solo se reportan hallazgos reproducidos al menos dos veces y con evidencia. Cada defecto tiene además un test automatizado que lo reproduce.</p>
+  <p class="meta">Entorno: Windows 10 · Chromium 152.0.7977.167 · viewport 808 × 912 · 23/10/2026. Severidad: <b>Mayor</b> = distorsiona el resultado principal en un uso frecuente; <b>Menor</b> = resultado incorrecto en un caso poco frecuente.</p>
+
+  <table>
+    <tr><th style="width:22mm">ID</th><th style="width:15mm">Tipo</th><th style="width:16mm">Severidad</th><th>Título</th></tr>
+    <tr><td>BUG-WC-001</td><td>Defecto</td><td>Menor</td><td>Contador y Keyword Density no coinciden ante un punto sin espacio</td></tr>
+    <tr><td>BUG-WC-002</td><td>Defecto</td><td>Menor</td><td>Un token formado solo por guiones aparece como palabra clave con 0 palabras</td></tr>
+    <tr><td>BUG-WC-003</td><td>Defecto</td><td><b>Mayor</b></td><td>Keyword Density no separa palabras unidas por espacio no separable (NBSP)</td></tr>
+    <tr><td>BUG-WC-004</td><td>Defecto</td><td>Menor</td><td>Cada emoji cuenta como 2 caracteres</td></tr>
+    <tr><td>OBS-WC-001</td><td>Mejora</td><td>—</td><td>Lista de <i>stop words</i> incompleta e inconsistente</td></tr>
+    <tr><td>OBS-WC-002</td><td>Mejora</td><td>—</td><td>La misma palabra en NFC y NFD se lista dos veces</td></tr>
+  </table>
+
+  <div class="finding">
+    <h3>BUG-WC-001 — Contador y Keyword Density no coinciden ante un punto sin espacio</h3>
+    <div class="meta">Severidad: Menor · Prioridad: media · Caso automatizado: TC-WC-017</div>
+    <div class="twocol">
+      <div>
+        <h4>Pasos</h4>
+        <ol><li>Abrir https://wordcounter.net/ con el editor vacío.</li><li>Escribir <code>hola.mundo</code> (sin espacio después del punto).</li><li>Observar el encabezado, <i>Details</i> y <i>Keyword Density</i>.</li></ol>
+        <h4>Resultado esperado</h4><p>Ambas funciones aplican la misma regla: si hay 1 palabra, Keyword Density muestra 1 entrada.</p>
+        <h4>Resultado actual</h4><p>El contador indica <b>1 word</b>, pero Keyword Density lista <b>2</b> entradas: <code>hola</code> y <code>mundo</code>. Además, <code>hola,mundo</code> cuenta 2 palabras y <code>hola.mundo</code> cuenta 1.</p>
+        <h4>Impacto y sugerencia</h4><p>Omitir el espacio después del punto es un error de tipeo frecuente; los dos indicadores se contradicen. Unificar la tokenización de ambas funciones.</p>
+      </div>
+      <figure><img src="../docs/assets/bugs/BUG-WC-001-punto-sin-espacio.jpg" alt=""><figcaption>1 palabra en Details; hola y mundo en Keyword Density</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h3>BUG-WC-002 — Un token formado solo por guiones aparece como palabra clave con 0 palabras</h3>
+    <div class="meta">Severidad: Menor · Prioridad: baja · Caso automatizado: TC-WC-018</div>
+    <div class="twocol">
+      <div>
+        <h4>Pasos</h4>
+        <ol><li>Abrir https://wordcounter.net/ con el editor vacío.</li><li>Escribir <code>---</code>.</li><li>Observar el encabezado y <i>Keyword Density</i>.</li></ol>
+        <h4>Resultado esperado</h4><p>Con 0 palabras, Keyword Density no muestra entradas (como ocurre con números o letras sueltas).</p>
+        <h4>Resultado actual</h4><p>El encabezado muestra <b>0 words 3 characters</b> y Keyword Density lista <code>---</code> con <b>1 (100 %)</b>.</p>
+        <h4>Impacto y sugerencia</h4><p>Los separadores de texto (<code>---</code>, <code>***</code>) contaminan el ranking y pueden desplazar palabras reales del top. Excluir tokens sin letras ni dígitos.</p>
+      </div>
+      <figure><img src="../docs/assets/bugs/BUG-WC-002-guiones.jpg" alt=""><figcaption>0 palabras y “---” al 100 %</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h3>BUG-WC-003 — Keyword Density no separa palabras unidas por espacio no separable (NBSP)</h3>
+    <div class="meta">Severidad: <b>Mayor</b> · Prioridad: alta · Caso automatizado: TC-WC-019</div>
+    <div class="twocol">
+      <div>
+        <h4>Pasos</h4>
+        <ol><li>Abrir https://wordcounter.net/.</li><li>Pegar <code>uno dos</code>, donde el espacio es U+00A0 (habitual al copiar desde Word o páginas web).</li><li>Observar <i>Details</i> y <i>Keyword Density</i>.</li></ol>
+        <h4>Resultado esperado</h4><p>Keyword Density muestra <code>uno</code> 1 y <code>dos</code> 1, coherente con el contador.</p>
+        <h4>Resultado actual</h4><p>El contador indica <b>2 words</b>, pero Keyword Density muestra una única entrada <b><code>uno dos</code> 1 (100 %)</b>.</p>
+        <h4>Impacto y sugerencia</h4><p>Altera el resultado principal de Keyword Density al pegar texto: el top 3 puede mostrar pares inexistentes y ocultar las palabras reales. Tratar U+00A0 como espacio al tokenizar.</p>
+      </div>
+      <figure><img src="../docs/assets/bugs/BUG-WC-003-nbsp.jpg" alt=""><figcaption>2 palabras; “uno dos” como una sola entrada</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h3>BUG-WC-004 — Cada emoji cuenta como 2 caracteres</h3>
+    <div class="meta">Severidad: Menor · Prioridad: baja · Casos: TC-WC-020 y TC-WC-016</div>
+    <div class="twocol">
+      <div>
+        <h4>Pasos</h4>
+        <ol><li>Abrir https://wordcounter.net/.</li><li>Pegar <code>hola 👋 mundo 🌎</code>.</li><li>Observar el contador de caracteres.</li></ol>
+        <h4>Resultado esperado</h4><p><b>14</b> caracteres: 9 letras, 3 espacios y 2 emojis.</p>
+        <h4>Resultado actual</h4><p><b>16</b> caracteres: el sitio cuenta unidades UTF-16 (<code>String.length</code>), así que cada emoji suma 2. Además, los emojis aparecen en Keyword Density.</p>
+        <h4>Impacto y sugerencia</h4><p>Quien escribe para un límite (redes sociales, SMS, SEO) ve un total mayor al real. Contar caracteres percibidos con <code>Intl.Segmenter</code>.</p>
+      </div>
+      <figure><img src="../docs/assets/bugs/BUG-WC-004-emoji.jpg" alt=""><figcaption>16 caracteres; emojis en Keyword Density</figcaption></figure>
+    </div>
+  </div>
+
+  <h3>Oportunidades de mejora</h3>
+  <table>
+    <tr><th style="width:22mm">ID</th><th>Observación</th><th style="width:60mm">Sugerencia</th></tr>
+    <tr><td>OBS-WC-001</td><td>Con <code>should would could</code>, Keyword Density excluye <code>would</code> pero lista <code>should</code> y <code>could</code>. Las <i>stop words</i> en español (<code>el</code>, <code>la</code>, <code>de</code>, <code>que</code>) nunca se excluyen.</td><td>Documentar y completar la lista, y aplicar la del idioma del texto.</td></tr>
+    <tr><td>OBS-WC-002</td><td><code>café</code> en forma NFC y en NFD (frecuente al copiar desde macOS) aparece como dos entradas distintas.</td><td>Normalizar a NFC antes de contar (el algoritmo del Ej. 4 ya lo hace).</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ EJERCICIO 3 -->
+<div class="section">
+  <h2>Ejercicio 3 — Experiencia de usuario en Farmatodo</h2>
+  <p><b>Método:</b> evaluación heurística (10 heurísticas de Nielsen y criterios de WCAG 2.2) sobre búsqueda, detalle de producto, carrito y checkout. Cada hallazgo se reprodujo y se verificó en el DOM. Severidad según la escala de Nielsen (0–4).</p>
+  <p class="meta">23/10/2026 · <code>www.farmatodo.com</code> es un selector de país, por eso el análisis se hizo en <code>www.farmatodo.com.co</code> (Colombia). Vistas: desktop a 1366 px, ventana de ~800 px y emulación móvil de 375 px. El checkout exige iniciar sesión: el análisis llega hasta ese paso, sin crear cuentas ni comprar.</p>
+
+  <table>
+    <tr><th style="width:22mm">ID</th><th style="width:34mm">Vista</th><th style="width:28mm">Flujo</th><th>Problema</th><th style="width:22mm">Severidad</th></tr>
+    <tr><td>UX-FT-001</td><td>Web desktop, ventana de 768–991 px</td><td>Detalle de producto</td><td>No se muestran ni el precio ni el botón de compra</td><td><b>4 — catastrófico</b></td></tr>
+    <tr><td>UX-FT-002</td><td>Web desktop (~800 px)</td><td>Búsqueda</td><td>Los filtros no se reconocen como seleccionables y no funcionan con teclado</td><td>3 — mayor</td></tr>
+    <tr><td>UX-FT-003</td><td>Web desktop (1366 y ~800 px)</td><td>Carrito y checkout</td><td>Se agrega un medicamento con fórmula sin aviso y una bolsa que el usuario no pidió</td><td>3 — mayor</td></tr>
+  </table>
+
+  <div class="finding flow">
+    <h3>UX-FT-001 — El detalle de producto no muestra precio ni botón de compra entre 768 y 991 px</h3>
+    <div class="meta">Vista: web desktop con ventana de 768–991 px (pantalla dividida, laptop chica, zoom alto) · Severidad 4 — catastrófico para ese segmento</div>
+    <p><b>Qué pasa.</b> En ese rango, la página muestra imagen, descripción y ficha técnica, pero <b>no el precio ni el botón “Agregar producto”</b>. En móvil existe una barra fija de compra y desde 992 px aparece el bloque de escritorio; en el medio no aparece ninguno.</p>
+    <p><b>Cómo replicarlo.</b> Abrir <code>farmatodo.com.co/producto/1000591-ibuprofeno-genfar-800-mg-caja-x-50-tabletas</code>, reducir la ventana a ~800 px y recorrer la página: no aparecen el precio ($17.560) ni el botón. Al ensanchar a 992 px, el bloque aparece.</p>
+    <p><b>Causa verificada en el DOM.</b> El bloque de compra tiene <code>d-none d-lg-block</code>: queda oculto por debajo de 992 px.</p>
+    <div class="shots">
+      <figure><img src="../docs/assets/ux/UX-FT-001-pdp-808px-sin-precio.jpg" alt=""><figcaption>~800 px: sin precio ni compra</figcaption></figure>
+      <figure><img src="../docs/assets/ux/UX-FT-001-pdp-mobile-375px.jpg" alt="" style="max-height:62mm;width:auto;margin:auto"><figcaption>375 px: barra “Agregar producto”</figcaption></figure>
+      <figure><img src="../docs/assets/ux/UX-FT-001-pdp-1366px.jpg" alt=""><figcaption>1366 px: bloque de compra visible</figcaption></figure>
+    </div>
+    <p><b>Impacto.</b> Bloquea la conversión: el usuario llega al producto y no puede comprar, sin ningún indicio de que falte algo.</p>
+    <p><b>Propuesta.</b> Mostrar un componente de compra en todos los anchos (barra fija por debajo de 992 px) y agregar pruebas de regresión visual en 768, 800, 900 y 991 px.</p>
+  </div>
+
+  <div class="finding">
+    <h3>UX-FT-002 — Los filtros de búsqueda no se reconocen como seleccionables y no son accesibles</h3>
+    <div class="meta">Vista: web desktop (~800 px) · Flujo: búsqueda · Severidad 3 — mayor</div>
+    <div class="twocol" style="grid-template-columns: 1fr 70mm">
+      <div>
+        <p><b>Qué pasa.</b> El indicador de cada filtro (Categoría, Marca, Prime) se dibuja como una <b>raya de 2 × 12 px</b> en lugar de una casilla: no parece un control. Las opciones son <code>div</code> sin rol, <code>tabindex</code> ni <code>aria-checked</code>, así que no se alcanzan con teclado ni las anuncia un lector de pantalla.</p>
+        <p><b>Cómo replicarlo.</b> Con la ventana a ~800 px, buscar un producto (por ejemplo <code>ibuprofneo</code>) y observar el panel <i>Filtros</i>; inspeccionar una opción en DevTools.</p>
+        <p><b>Impacto.</b> Los filtros parecen texto informativo. Incumple WCAG 2.2 §2.1.1 (Teclado), §4.1.2 (Nombre, función, valor) y §2.5.8 (objetivo mínimo de 24 × 24 px).</p>
+        <p><b>Propuesta.</b> Usar <code>input type="checkbox"</code> nativos con <code>&lt;label&gt;</code>, un indicador de al menos 24 × 24 px y estado seleccionado visible.</p>
+      </div>
+      <div class="shots two" style="margin:0">
+        <figure><img src="../docs/assets/ux/UX-FT-002-busqueda-808px.jpg" alt=""><figcaption>Resultados a ~800 px</figcaption></figure>
+        <figure><img src="../docs/assets/ux/UX-FT-002-filtros-zoom.png" alt=""><figcaption>Detalle: rayas en vez de casillas</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h3>UX-FT-003 — El carrito acepta un medicamento con fórmula sin avisar y agrega una bolsa que el usuario no pidió</h3>
+    <div class="meta">Vista: web desktop (1366 y ~800 px) · Flujo: detalle → carrito → checkout · Severidad 3 — mayor</div>
+    <p><b>Qué pasa.</b> (1) El ibuprofeno 800 mg requiere fórmula médica, pero al agregarlo no aparece ningún aviso, y en el carrito tampoco. (2) Tras agregar solo el ibuprofeno, el carrito muestra <b>2 productos</b>: se suma una “Bolsa Biodegradable Farmatodo” ($600) sin explicación, que desaparece sola al quitar el medicamento.</p>
+    <p><b>Cómo replicarlo.</b> En la página del producto a 1366 px, presionar <i>Agregar producto</i>, abrir <code>/carrito</code> y presionar <i>Ir a pagar</i> (abre el login: límite del análisis).</p>
+    <div class="shots two">
+      <figure><img src="../docs/assets/ux/UX-FT-003-agregado-sin-aviso.jpg" alt=""><figcaption>Agregado sin aviso de fórmula</figcaption></figure>
+      <figure><img src="../docs/assets/ux/UX-FT-003-carrito-1366px.jpg" alt=""><figcaption>Carrito con la bolsa agregada sola</figcaption></figure>
+    </div>
+    <p><b>Impacto.</b> El usuario descubre tarde que necesita fórmula (pedidos fallidos, contactos a soporte), y un ítem cobrado que no agregó afecta la confianza.</p>
+    <p><b>Propuesta.</b> Rotular “Requiere fórmula médica” junto al botón de compra y en el carrito, explicando la carga de la fórmula antes del pago. Si la bolsa es obligatoria, indicar el motivo; si no, permitir quitarla.</p>
+  </div>
+</div>
+
+<!-- ============================================================ EJERCICIO 4 -->
+<div class="section">
+  <h2>Ejercicio 4 — Contador de frecuencia de palabras</h2>
+  <p>Programa en Python que lee un archivo de texto y muestra la cantidad de palabras, la cantidad de caracteres (incluyendo espacios, sin saltos de línea) y la frecuencia de cada palabra, de mayor a menor y alfabéticamente en caso de empate. Solo usa la biblioteca estándar. Código: <code>src/farmatodo_qa/word_frequency/</code>.</p>
+
+  <div class="twocol" style="grid-template-columns: 1fr 1fr">
+    <div>
+      <h4>Entrada (ejemplo del PDF)</h4>
+<pre class="nowrap">farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud
+farmatodo cuida toda tu salud</pre>
+      <h4>Ejecución</h4>
+<pre>uv run word-frequency data/samples/farmatodo_example.txt</pre>
+    </div>
+    <div>
+      <h4>Salida (idéntica a la esperada, verificada byte a byte)</h4>
+<pre>14 words
+99 characters
+farmatodo: 6
+cuida: 3
+salud: 2
+tu: 2
+toda: 1</pre>
+    </div>
+  </div>
+
+  <h3>Código principal</h3>
+<pre>_WORD_RE = re.compile(r"[^\W_]+(?:['’\-][^\W_]+)*")   # letras/dígitos Unicode, con ' o - internos
+_LINE_BREAKS = frozenset("\r\n")
+
+def tokenize(text: str) -> list[str]:
+    normalized = unicodedata.normalize("NFC", text)
+    return [m.group(0).casefold() for m in _WORD_RE.finditer(normalized)]
+
+def count_characters(text: str) -> int:
+    return sum(1 for char in text if char not in _LINE_BREAKS)
+
+def sort_frequencies(counter: Counter[str]) -> tuple[tuple[str, int], ...]:
+    return tuple(sorted(counter.items(), key=lambda item: (-item[1], item[0])))
+
+def analyze_lines(lines: Iterable[str]) -> TextStats:
+    counter: Counter[str] = Counter()
+    words = characters = 0
+    for line in lines:                       # streaming: una línea en memoria a la vez
+        tokens = tokenize(line)
+        words += len(tokens)
+        counter.update(tokens)
+        characters += count_characters(line)
+    return TextStats(words, characters, sort_frequencies(counter))</pre>
+
+  <h3>Algoritmo</h3>
+  <ol>
+    <li>Leer el archivo línea por línea (UTF-8).</li>
+    <li>En cada línea, contar los caracteres que no son <code>\n</code> ni <code>\r</code>, extraer las palabras, pasarlas a minúsculas y acumularlas en un diccionario.</li>
+    <li>Ordenar por <code>(-frecuencia, palabra)</code>: mayor frecuencia primero y, en empate, orden alfabético.</li>
+    <li>Imprimir el resultado (formato separado del cálculo; <code>--histogram</code> agrega barras).</li>
+  </ol>
+
+  <h3>Complejidad</h3>
+  <p>Con <b>N</b> = caracteres de la entrada, <b>U</b> = palabras distintas y <b>L</b> = largo de la línea más larga:</p>
+  <ul>
+    <li><b>Tiempo: O(N + U log U).</b> Cada carácter se recorre una vez y cada inserción en el diccionario es O(1) amortizado; ordenar las U palabras cuesta O(U log U). En el peor caso (todas distintas) es O(N log N).</li>
+    <li><b>Espacio: O(U + L).</b> El diccionario guarda U palabras y solo hay una línea en memoria.</li>
+  </ul>
+  <p>Un test lo verifica empíricamente: duplicar la entrada (100 000 → 200 000 palabras) aproximadamente duplica el tiempo.</p>
+
+  <h3>Decisiones y pruebas</h3>
+  <ul>
+    <li><b>Qué es una palabra:</b> letras o dígitos Unicode, con apóstrofo o guion internos (<code>don't</code>, <code>e-commerce</code>). La puntuación no cuenta, <code>Hola</code> y <code>hola</code> son la misma palabra y <code>camión</code> no se parte en dos.</li>
+    <li><b>Desempate:</b> orden alfabético por punto de código, determinista e independiente de la configuración regional.</li>
+    <li><b>11 casos automatizados</b> (TC-ALG-001…011): salida exacta del PDF, conteo de palabras y caracteres, orden y desempate, puntuación y mayúsculas, acentos y ñ, separadores de espacio, archivo vacío, errores de lectura, histograma y escalamiento lineal.</li>
+    <li><b>Diferencia con WordCounter:</b> el sitio desempata por orden de aparición (<code>tu</code> antes que <code>salud</code>); el PDF pide orden alfabético (<code>salud</code> antes que <code>tu</code>). Ambos coinciden en 14 palabras y 99 caracteres.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ CIERRE -->
+<div class="section">
+  <h2>Enfoque de calidad y conclusiones</h2>
+
+  <h3>Cómo se organizó el trabajo</h3>
+  <table>
+    <tr><th style="width:42mm">Práctica</th><th>Qué se hizo</th></tr>
+    <tr><td>Especificación primero</td><td>21 requisitos y 51 casos de prueba en <code>specs/</code>, cada uno con requisito, riesgo (impacto × probabilidad), prioridad, pasos y resultado esperado. La matriz de trazabilidad se genera y valida automáticamente.</td></tr>
+    <tr><td>Priorización por riesgo</td><td>9 casos P0 (los tres objetivos de WordCounter, el reporte resumen, el núcleo del algoritmo y el quality gate), P1 para bordes reales y P2 para casos poco frecuentes, performance y defectos conocidos.</td></tr>
+    <tr><td>Arquitectura</td><td>Núcleo puro (oráculo, algoritmo, métricas, gate) separado de la infraestructura (Selenium, pytest, disco). La regla se verifica en CI con import-linter. 90 % de cobertura de código del framework.</td></tr>
+    <tr><td>Flaky tests</td><td>Cada intento se registra. Pasar al reintentar es FLAKY, nunca PASS; un P0 flaky bloquea. El historial detecta tests inestables entre corridas.</td></tr>
+    <tr><td>CI/CD</td><td>GitHub Actions: chequeos en cada PR, suite funcional en cada push y a diario, performance semanal, historial en la rama <code>qa-history</code> y portal en GitHub Pages. <code>master</code> protegida y <code>develop</code> sincronizada.</td></tr>
+  </table>
+
+  <h3>Principales hallazgos</h3>
+  <ul>
+    <li><b>WordCounter:</b> 4 defectos confirmados. El más relevante, BUG-WC-003: Keyword Density no separa palabras unidas por NBSP, algo frecuente al pegar texto.</li>
+    <li><b>Farmatodo:</b> 3 hallazgos UX. El más grave, UX-FT-001: entre 768 y 991 px no se puede comprar desde el detalle de producto.</li>
+  </ul>
+
+  <h3>Limitaciones</h3>
+  <ul>
+    <li>Los sitios son de terceros: su disponibilidad y cambios no se controlan. Se mitiga con el estado BLOCKED y categorías de fallo.</li>
+    <li>Las reglas de WordCounter no están documentadas: el oráculo modela 42 observaciones reales.</li>
+    <li>La performance se mide desde runners compartidos: es descriptiva, sin SLA inventados.</li>
+    <li>El checkout de Farmatodo exige cuenta: el análisis UX llega hasta ese paso.</li>
+  </ul>
+
+  <h3>Próximos pasos</h3>
+  <ul>
+    <li>Ejecutar la suite E2E también en Firefox (la fábrica de navegadores ya lo admite) y en más resoluciones.</li>
+    <li>Regresión visual para los hallazgos responsive de Farmatodo.</li>
+    <li>Confirmar con el equipo las preguntas abiertas (desempate con acentos, formato del histograma).</li>
+  </ul>
+
+  <div class="box" style="margin-top:6mm">
+    <b>Para revisar en vivo:</b> el <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/">portal de calidad</a> muestra los resultados actualizados, la trazabilidad y la tendencia; el <a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering">repositorio</a> contiene todo el código y las especificaciones, con un README que explica cómo ejecutarlo en una máquina limpia.
+  </div>
+</div>
+
+</body>
+</html>
