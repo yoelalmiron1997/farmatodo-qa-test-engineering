@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -25,6 +26,31 @@ box.dispatchEvent(new KeyboardEvent('keyup', {bubbles: true}));
 """
 
 
+# Lecturas atómicas: el panel se vuelve a dibujar ~300 ms después de cada keyup. Leer fila por
+# fila con WebElement producía StaleElementReferenceException (detectado por el análisis de
+# flaky en la primera corrida de CI). Una sola llamada JS no retiene referencias a elementos.
+_READ_TEXTS_JS = """
+return arguments[0].map(sel => { const el = document.querySelector(sel); return el ? el.textContent : null; });
+"""
+_READ_KEYWORDS_JS = """
+const [rowsSel, wordSel, badgeSel] = arguments;
+return [...document.querySelectorAll(rowsSel)].map(row => {
+  const word = row.querySelector(wordSel), badge = row.querySelector(badgeSel);
+  return [word ? word.textContent : '', badge ? badge.textContent : ''];
+});
+"""
+
+
+def css(locator: tuple[str, str]) -> str:
+    """Convierte un localizador By.ID / By.CSS_SELECTOR a selector CSS para las lecturas por JS."""
+    by, value = locator
+    if by == By.ID:
+        return f"#{value}"
+    if by == By.CSS_SELECTOR:
+        return value
+    raise ValueError(f"localizador no convertible a CSS: {locator}")
+
+
 @dataclass(frozen=True, slots=True)
 class Counts:
     words: int
@@ -43,12 +69,13 @@ class KeywordDensityPanel:
         self._driver = driver
 
     def keywords(self) -> list[Keyword]:
-        result = []
-        for row in self._driver.find_elements(*locators.KEYWORD_ROWS):
-            word = row.find_element(*locators.KEYWORD_WORD).get_attribute("textContent") or ""
-            badge = row.find_element(*locators.KEYWORD_BADGE).get_attribute("textContent") or ""
-            result.append(Keyword(word.strip(), _to_int(badge)))
-        return result
+        rows = self._driver.execute_script(
+            _READ_KEYWORDS_JS,
+            css(locators.KEYWORD_ROWS),
+            css(locators.KEYWORD_WORD),
+            css(locators.KEYWORD_BADGE),
+        )
+        return [Keyword(str(word).strip(), _to_int(str(badge))) for word, badge in rows]
 
     def top(self, n: int = 3) -> list[Keyword]:
         return self.keywords()[:n]
@@ -94,14 +121,20 @@ class WordCounterPage:
         self._driver.execute_script(_SET_TEXT_JS, self.editor(), text)
 
     # ------------------------------------------------------------------ lectura
+    def _texts(self, *locs: tuple[str, str]) -> list[str]:
+        values = self._driver.execute_script(_READ_TEXTS_JS, [css(loc) for loc in locs])
+        missing = [loc for loc, value in zip(locs, values, strict=True) if value is None]
+        if missing:
+            raise LookupError(f"elementos no encontrados: {missing}")
+        return [str(value) for value in values]
+
     def _text(self, locator: tuple[str, str]) -> str:
-        return self._driver.find_element(*locator).get_attribute("textContent") or ""
+        return self._texts(locator)[0]
 
     def counts(self) -> Counts:
-        return Counts(
-            words=_to_int(self._text(locators.WORD_COUNT)),
-            characters=_to_int(self._text(locators.CHARACTER_COUNT)),
-        )
+        """Palabras y caracteres del panel Details, leídos en la misma llamada (consistentes entre sí)."""
+        words, characters = self._texts(locators.WORD_COUNT, locators.CHARACTER_COUNT)
+        return Counts(words=_to_int(words), characters=_to_int(characters))
 
     def headline_counts(self) -> Counts:
         text = self._text(locators.HEADLINE)

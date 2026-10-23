@@ -1,7 +1,7 @@
 ---
 title: Specification-Driven Design — Farmatodo QA Engineering
 document_id: SDD-FQA
-version: 1.0.0
+version: 1.0.1
 status: aprobado para implementación (2026-10-23) — implementado
 author: Yoel Almirón
 date: 2026-10-22
@@ -498,6 +498,7 @@ En la normalización de resultados (`qa results build`): `RES001` resultado sin 
 |---|---|---|---|
 | 0.1.0 | 2026-10-22 | Yoel Almirón | Borrador inicial: análisis del PDF, requisitos, 45 casos, priorización, arquitectura y diseño de métricas, CI/CD y portal. Pendiente de aprobación. |
 | 1.0.0 | 2026-10-23 | Yoel Almirón | Aprobado para implementación. Resultados del spike (§2.5) incorporados a los casos: valores exactos en TC-WC-004…016, desempate por aparición, evento `keyup`. Nuevos casos: TC-WC-017…020 (defectos confirmados), TC-FW-009 (oráculo contra observaciones) y TC-FW-010 (plugin con `pytester`). Reglas de validación según la implementación (§10.3), esquema definitivo (Anexo E.2), baseline calculado desde el historial (Anexo D.4), sin hash del archivo de test en la comparabilidad (Anexo C.3). El correo del Anexo J queda como borrador: mientras no haya respuesta se aplican las suposiciones A-01…A-07. |
+| 1.0.1 | 2026-10-23 | Yoel Almirón | Primera corrida en GitHub Actions: el análisis de flaky detectó `StaleElementReferenceException` al leer Keyword Density (el panel se vuelve a dibujar tras el *debounce* de ~300 ms). Lecturas del Page Object pasan a una sola llamada JavaScript atómica. Los 4 defectos conocidos se reproducen en CI con los valores del spike. Rama principal `master` protegida y `develop` sincronizada. |
 
 ---
 
