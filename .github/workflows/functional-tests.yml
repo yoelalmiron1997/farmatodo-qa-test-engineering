@@ -4,7 +4,7 @@ name: functional-tests
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths-ignore: ["docs/**", "**.md"]
   workflow_dispatch:
     inputs:
@@ -83,7 +83,7 @@ jobs:
   history:
     name: Persistir historial
     needs: test
-    if: always() && github.ref == 'refs/heads/main' && needs.test.result != 'cancelled'
+    if: always() && github.ref == 'refs/heads/master' && needs.test.result != 'cancelled'
     permissions:
       contents: write
     uses: ./.github/workflows/persist-history.yml

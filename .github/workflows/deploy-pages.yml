@@ -4,12 +4,12 @@ name: deploy-pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths: ["docs/**", "specs/**", "mkdocs.yml", "README.md", "src/farmatodo_qa/reporting/**"]
   workflow_run:
     workflows: [functional-tests, performance]
     types: [completed]
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions: {}
@@ -21,10 +21,10 @@ concurrency:
 jobs:
   build:
     name: Construir portal
-    # Nunca desde código de pull requests: solo corridas de main.
+    # Nunca desde código de pull requests: solo corridas de master.
     if: >
       github.event_name != 'workflow_run' ||
-      (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request')
+      (github.event.workflow_run.head_branch == 'master' && github.event.workflow_run.event != 'pull_request')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: main
+          ref: master
           persist-credentials: false
       - name: Historial (solo lectura)
         id: history

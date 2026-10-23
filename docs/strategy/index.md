@@ -12,10 +12,10 @@ Puntaje = Impacto (1–5) × Probabilidad (1–5). **P0** ≥ 15 · **P1** 8–1
 
 | Suite | Qué prueba | Dependencias | Cuándo corre |
 |---|---|---|---|
-| `tests/unit/product` | Algoritmo del Ejercicio 4 y oráculo | ninguna (red deshabilitada) | PR y `main` |
-| `tests/unit/framework` | Clasificador flaky, métricas, gate, historial, validador, reporting | ninguna (red deshabilitada) | PR y `main` |
-| `tests/integration` | Plugin de pytest (con `pytester`), README | sistema de archivos | PR y `main` |
-| `tests/e2e` | wordcounter.net con Selenium | Chrome, Internet | `main`, manual y diaria |
+| `tests/unit/product` | Algoritmo del Ejercicio 4 y oráculo | ninguna (red deshabilitada) | PR y `master` |
+| `tests/unit/framework` | Clasificador flaky, métricas, gate, historial, validador, reporting | ninguna (red deshabilitada) | PR y `master` |
+| `tests/integration` | Plugin de pytest (con `pytester`), README | sistema de archivos | PR y `master` |
+| `tests/e2e` | wordcounter.net con Selenium | Chrome, Internet | `master`, manual y diaria |
 | `tests/performance` | Mediciones P2 | Chrome, Internet | manual y semanal opcional |
 
 ## Aislamiento

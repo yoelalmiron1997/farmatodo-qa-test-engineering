@@ -92,11 +92,14 @@ uv run mkdocs serve             # http://127.0.0.1:8000
 
 | Workflow | Cuándo | Qué hace |
 |---|---|---|
-| `pr-checks` | PR y push a `main` | ruff, formato, mypy, import-linter, `qa specs validate`, unit + integración con cobertura, `mkdocs build --strict`; job `readme-smoke` con estos comandos en un runner limpio |
-| `functional-tests` | push a `main`, manual y diario | unit + integración sin reintentos; E2E headless con reintentos; resultado normalizado, reporte, artifacts, gate; persiste el historial |
+| `pr-checks` | PR y push a `master` | ruff, formato, mypy, import-linter, `qa specs validate`, unit + integración con cobertura, `mkdocs build --strict`; job `readme-smoke` con estos comandos en un runner limpio |
+| `functional-tests` | push a `master`, manual y diario | unit + integración sin reintentos; E2E headless con reintentos; resultado normalizado, reporte, artifacts, gate; persiste el historial |
 | `performance` | manual y semanal | mediciones P2 secuenciales; persiste el historial |
 | `deploy-pages` | cambios en docs/specs, fin de las corridas anteriores, manual | genera el portal desde specs + `qa-history` y lo publica con las acciones oficiales de Pages |
+| `sync-develop` | push a `master` | avanza `develop` hasta `master` (o hace merge si `develop` divergió; nunca fuerza) |
 | `persist-history` | reutilizable | agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
+
+**Ramas:** `master` es la rama principal y está protegida (solo cambios por pull request con los chequeos de `pr-checks` en verde, sin force-push ni borrado). `develop` se mantiene sincronizada con `master` automáticamente. `qa-history` solo la escribe CI.
 
 Las acciones están fijadas por SHA de commit, con permisos mínimos por job y concurrencia controlada. Los PR nunca publican ni escriben historial.
 

@@ -10,6 +10,6 @@ Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta como un f
 | 4. Contador de frecuencia de palabras | Algoritmo propio, salida exacta del PDF, complejidad | [Algoritmo](algorithm.md) |
 
 !!! note "Cómo leer este tablero"
-    Los datos de ejecución provienen de la rama `qa-history`, que GitHub Actions alimenta en cada corrida de `main`. Un despliegue exitoso del portal **no** implica que las pruebas hayan pasado: el estado real es el del *quality gate* de cada corrida.
+    Los datos de ejecución provienen de la rama `qa-history`, que GitHub Actions alimenta en cada corrida de `master`. Un despliegue exitoso del portal **no** implica que las pruebas hayan pasado: el estado real es el del *quality gate* de cada corrida.
 
 --8<-- "docs/generated/dashboard.md"

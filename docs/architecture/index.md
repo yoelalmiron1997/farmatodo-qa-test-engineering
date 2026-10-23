@@ -93,7 +93,7 @@ flowchart LR
 ```mermaid
 flowchart TB
   PR["Pull request"] --> A["pr-checks<br/>ruff · mypy · import-linter · unit · integración · specs · mkdocs --strict"]
-  A -->|merge| M["main"]
+  A -->|merge| M["master"]
   M --> B["functional-tests<br/>unit + integración + E2E (reruns=2)"]
   B --> B1["results · reporte resumen · artifacts"]
   B1 --> B2["quality gate = estado del job"]
@@ -109,7 +109,7 @@ flowchart TB
 
 ```mermaid
 sequenceDiagram
-  participant T as functional-tests (main)
+  participant T as functional-tests (master)
   participant H as job persist-history
   participant G as rama qa-history
   participant D as deploy-pages

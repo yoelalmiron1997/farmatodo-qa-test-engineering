@@ -161,7 +161,7 @@ Los criterios de aceptación **por requisito** están en `requirements.yaml` (`a
 | Unit — producto | `tests/unit/product/` | Algoritmo E4, oráculos | Ninguna (sockets deshabilitados) | PR, push |
 | Unit — framework | `tests/unit/framework/` | Clasificador, agregador, gate, historial, validador, renderers, estadística | Ninguna (sockets deshabilitados) | PR, push |
 | Integración | `tests/integration/` | Plugin pytest con `pytester`, repositorio en disco, build de MkDocs, README smoke | Sistema de archivos, MkDocs | PR (sin red externa), push |
-| E2E | `tests/e2e/` | WordCounter con Selenium | Chrome, Internet, wordcounter.net | push a `main`, manual, programado |
+| E2E | `tests/e2e/` | WordCounter con Selenium | Chrome, Internet, wordcounter.net | push a `master`, manual, programado |
 | Performance | `tests/performance/` | PERF-001…003 | Igual que E2E | manual, semanal opcional |
 | Validación de documentación | `qa specs validate` | SDD, casos, requisitos, trazabilidad | Ninguna | PR, push |
 | Manual | `docs/bugs/`, `docs/ux/` | Ejercicios 2 y 3 | Navegador humano | Sesiones documentadas |
@@ -767,17 +767,18 @@ Definido una sola vez en `src/farmatodo_qa/results/models.py` (Pydantic, `extra=
 
 | Workflow | Disparadores | Jobs | Permisos | Depende de sitios externos |
 |---|---|---|---|---|
-| `pr-checks.yml` | `pull_request` → `main` | lint (ruff), format check, types (mypy), unit (sin red), integración, `qa specs validate`, `mkdocs build --strict`, README smoke (TC-DEL-001) | `contents: read` | No |
-| `functional-tests.yml` | `push` a `main`, `workflow_dispatch`, `schedule` (diario) | `e2e` → `report` → `gate`; `persist-history` (solo `main`) | e2e/report/gate: `contents: read`; persist: `contents: write` | Sí |
+| `pr-checks.yml` | `pull_request` → `master` | lint (ruff), format check, types (mypy), unit (sin red), integración, `qa specs validate`, `mkdocs build --strict`, README smoke (TC-DEL-001) | `contents: read` | No |
+| `functional-tests.yml` | `push` a `master`, `workflow_dispatch`, `schedule` (diario) | `e2e` → `report` → `gate`; `persist-history` (solo `master`) | e2e/report/gate: `contents: read`; persist: `contents: write` | Sí |
 | `performance.yml` | `workflow_dispatch`, `schedule` semanal opcional | `measure` → `persist-history` | igual que arriba | Sí |
-| `persist-history.yml` | `workflow_call` desde functional/performance (solo `main`) | `persist` con `concurrency: qa-history-writer` | `contents: write` | No |
-| `deploy-pages.yml` | `push` a `main` en `docs/**`, `specs/**`, `mkdocs.yml`; `workflow_run` (functional/performance completados, cualquier conclusión); `workflow_dispatch` | `build` → `deploy` | build: `contents: read`; deploy: `pages: write`, `id-token: write` | No |
+| `sync-develop.yml` | `push` a `master`, `workflow_dispatch` | `sync`: avance rápido de `develop` o merge sin forzar | `contents: write` | No |
+| `persist-history.yml` | `workflow_call` desde functional/performance (solo `master`) | `persist` con `concurrency: qa-history-writer` | `contents: write` | No |
+| `deploy-pages.yml` | `push` a `master` en `docs/**`, `specs/**`, `mkdocs.yml`; `workflow_run` (functional/performance completados, cualquier conclusión); `workflow_dispatch` | `build` → `deploy` | build: `contents: read`; deploy: `pages: write`, `id-token: write` | No |
 
 ### F.2 Flujo
 ```mermaid
 flowchart TB
   PR[Pull request] --> A[pr-checks\nlint · types · unit · specs · mkdocs build]
-  A -->|merge| M[main]
+  A -->|merge| M[master]
   M --> B[functional-tests\nSelenium headless + reruns]
   B --> B1[report + artifacts\nJUnit · HTML · JSON · screenshots]
   B1 --> B2[gate\nestado real del job]
@@ -790,8 +791,9 @@ flowchart TB
 ```
 
 ### F.3 Decisiones de seguridad
+- **Ramas:** `master` protegida (pull request obligatorio con `pr-checks` en verde, sin force-push ni borrado); `develop` sincronizada con `master` por `sync-develop`; `qa-history` escrita solo por CI.
 - **Permisos mínimos** a nivel workflow (`permissions: {}`) y concedidos por job.
-- PRs nunca publican ni escriben historial. `deploy-pages` vía `workflow_run` solo procesa corridas con `head_branch == 'main'` y `event != 'pull_request'`; los artifacts consumidos se tratan como datos (se validan contra el esquema, nunca se ejecutan).
+- PRs nunca publican ni escriben historial. `deploy-pages` vía `workflow_run` solo procesa corridas con `head_branch == 'master'` y `event != 'pull_request'`; los artifacts consumidos se tratan como datos (se validan contra el esquema, nunca se ejecutan).
 - Acciones oficiales de Pages: `actions/configure-pages`, `actions/upload-pages-artifact`, `actions/deploy-pages`. **Pin por SHA de commit** con comentario de la versión y Dependabot (`github-actions`) para actualizarlas. Las versiones exactas se verifican al implementar la Fase 5 (no se fijan de memoria en este documento).
 - Concurrencia: `group: pages, cancel-in-progress: false`; `group: qa-history-writer, cancel-in-progress: false`; E2E: `group: e2e-${{ github.ref }}`.
 - **Estado de ejecución ≠ estado de despliegue:** el portal muestra el `gate.decision` de la corrida que publica; un deploy verde no implica tests verdes.
@@ -809,7 +811,7 @@ flowchart TB
 
 ```mermaid
 sequenceDiagram
-  participant T as functional-tests (main)
+  participant T as functional-tests (master)
   participant H as persist-history
   participant G as rama qa-history
   participant D as deploy-pages

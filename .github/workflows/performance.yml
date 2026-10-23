@@ -65,7 +65,7 @@ jobs:
   history:
     name: Persistir historial
     needs: measure
-    if: always() && github.ref == 'refs/heads/main' && needs.measure.result != 'cancelled'
+    if: always() && github.ref == 'refs/heads/master' && needs.measure.result != 'cancelled'
     permissions:
       contents: write
     uses: ./.github/workflows/persist-history.yml

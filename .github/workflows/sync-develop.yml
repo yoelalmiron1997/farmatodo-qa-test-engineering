@@ -1,0 +1,46 @@
+# Mantiene `develop` sincronizada con `master` después de cada cambio en `master`.
+# Avance rápido si `develop` no divergió; si tiene commits propios, merge sin forzar nada.
+# Un conflicto falla el job de forma visible: nunca se reescribe historia.
+name: sync-develop
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: sync-develop
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: develop ← master
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Sincronizar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git ls-remote --exit-code --heads origin develop >/dev/null; then
+            git push origin HEAD:refs/heads/develop
+            echo "develop creada desde master"; exit 0
+          fi
+          git fetch origin develop
+          if git merge-base --is-ancestor origin/develop HEAD; then
+            git push origin HEAD:develop
+            echo "develop avanzó a $(git rev-parse --short HEAD)"
+          else
+            git switch -c sync-develop origin/develop
+            git merge --no-ff master -m "chore: sincronizar develop con master"
+            git push origin HEAD:develop
+            echo "develop tenía commits propios: se integró master con un merge"
+          fi
