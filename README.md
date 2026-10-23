@@ -99,7 +99,7 @@ Las versiones son las del lockfile (`uv.lock`): local y CI usan exactamente las 
 | Lenguaje y entorno | [Python](https://www.python.org/) | 3.12.3 | Todo el framework y el algoritmo del ejercicio 4 |
 | | [uv](https://docs.astral.sh/uv/) | — | Instala Python y dependencias desde el lockfile: un solo comando, el mismo resultado en cualquier máquina |
 | Automatización UI | [Selenium WebDriver](https://www.selenium.dev/) | 4.51 | Pruebas E2E sobre wordcounter.net con Page Object Model. Selenium Manager descarga el driver compatible con el Chrome instalado |
-| Ejecución de pruebas | [Pytest](https://docs.pytest.org/) | 8.4 | Runner de unit, integración, E2E y performance. Un plugin propio registra cada intento, los estados y las evidencias |
+| Ejecución de pruebas | [Pytest](https://docs.pytest.org/) | 9.1 | Runner de unit, integración, E2E y performance. Un plugin propio registra cada intento, los estados y las evidencias |
 | | [pytest-rerunfailures](https://github.com/pytest-dev/pytest-rerunfailures) | 16.7 | Reintentos en E2E. Un test que pasa al reintentar se marca FLAKY, no PASS |
 | | [pytest-randomly](https://github.com/pytest-dev/pytest-randomly) | 5.0 | Orden aleatorio de los tests: detecta dependencias ocultas entre ellos |
 | | [pytest-socket](https://github.com/miketheman/pytest-socket) | 0.8 | Bloquea la red en los tests unitarios: garantiza que no dependen de sitios externos |
