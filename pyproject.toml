@@ -1,0 +1,148 @@
+[project]
+name = "farmatodo-qa"
+version = "1.0.0"
+description = "Farmatodo QA Engineering & Quality Intelligence Platform — prueba técnica de Ingeniero de Calidad"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Yoel Almirón" }]
+dependencies = [
+    "pydantic>=2.9,<3",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+# Dependencias para ejecutar las pruebas de UI. El núcleo no las importa.
+ui = ["selenium>=4.25,<5"]
+
+[project.scripts]
+qa = "farmatodo_qa.cli:main"
+word-frequency = "farmatodo_qa.word_frequency.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<9",
+    "pytest-rerunfailures>=14,<17",
+    "pytest-randomly>=3.15",
+    "pytest-socket>=0.7",
+    "coverage[toml]>=7.6",
+    "selenium>=4.25,<5",
+    "ruff>=0.7",
+    "mypy>=1.13",
+    "types-PyYAML>=6.0",
+    "import-linter>=2.1",
+]
+docs = [
+    "mkdocs-material>=9.5,<10",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/farmatodo_qa"]
+
+# --------------------------------------------------------------------------- pytest
+[tool.pytest.ini_options]
+minversion = "8.0"
+# `pytest` a secas corre solo lo que no depende de sitios externos; E2E y performance se piden por ruta.
+testpaths = ["tests/unit", "tests/integration"]
+addopts = ["-ra", "--strict-markers", "--import-mode=importlib", "-p", "farmatodo_qa.pytest_plugin", "-p", "pytester"]
+pythonpath = ["tests"]
+markers = [
+    "case(id): vincula el test con un caso de specs/cases (obligatorio)",
+    "e2e: prueba contra wordcounter.net con Selenium",
+    "performance: medición ligera de performance (workflow separado)",
+    "known_defect(bug_id): reproduce un defecto confirmado; falla mientras exista",
+]
+xfail_strict = true
+
+# --------------------------------------------------------------------------- ruff
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "PL", "PT", "N"]
+ignore = [
+    "PLR0913",  # funciones de construcción de modelos con varios argumentos con nombre
+    "PLR2004",  # valores literales en tests son datos explícitos
+    "RUF001", "RUF002", "RUF003",  # texto en español con caracteres Unicode intencionales
+]
+
+[tool.ruff.lint.pycodestyle]
+# El formateador mantiene 110; se toleran hasta 130 para cadenas de Markdown/HTML que no conviene partir.
+max-line-length = 130
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["PLR0915", "E741", "PLC0415"]  # `O` = alias documentado de AttemptOutcome en tablas de datos
+# Importación diferida de Selenium: la suite unitaria carga el plugin sin necesitar Selenium.
+"src/farmatodo_qa/pytest_plugin/fixtures.py" = ["PLC0415"]
+
+# --------------------------------------------------------------------------- mypy
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["farmatodo_qa"]
+mypy_path = "src"
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["selenium.*"]
+ignore_missing_imports = true
+
+# --------------------------------------------------------------------------- import-linter
+# Hace verificable la regla de dependencias del SDD (Anexo A.3, principio D).
+[tool.importlinter]
+root_package = "farmatodo_qa"
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "El núcleo no depende de infraestructura (Selenium, pytest, adaptadores)"
+type = "forbidden"
+source_modules = [
+    "farmatodo_qa.word_frequency",
+    "farmatodo_qa.oracles",
+    "farmatodo_qa.results",
+    "farmatodo_qa.metrics",
+    "farmatodo_qa.quality_gate",
+    "farmatodo_qa.traceability",
+    "farmatodo_qa.specs.models",
+    "farmatodo_qa.specs.validator",
+    "farmatodo_qa.reporting.dashboard_model",
+    "farmatodo_qa.reporting.summary",
+]
+forbidden_modules = [
+    "selenium",
+    "pytest",
+    "farmatodo_qa.ui",
+    "farmatodo_qa.pytest_plugin",
+    "farmatodo_qa.cli",
+]
+
+[[tool.importlinter.contracts]]
+name = "Métricas de flaky y performance son independientes entre sí"
+type = "independence"
+modules = [
+    "farmatodo_qa.metrics.flaky",
+    "farmatodo_qa.metrics.performance",
+]
+
+[[tool.importlinter.contracts]]
+name = "El algoritmo del Ejercicio 4 y el oráculo no comparten código"
+type = "independence"
+modules = [
+    "farmatodo_qa.word_frequency",
+    "farmatodo_qa.oracles",
+]
+
+[tool.coverage.run]
+# `coverage run -m pytest` (no pytest-cov): el plugin importa módulos antes de que pytest-cov empiece a medir.
+source = ["farmatodo_qa"]
+omit = ["*/ui/*", "*/pytest_plugin/fixtures.py", "*/__main__.py"]  # se ejercitan solo en E2E
+
+[tool.coverage.report]
+show_missing = false
+skip_empty = true

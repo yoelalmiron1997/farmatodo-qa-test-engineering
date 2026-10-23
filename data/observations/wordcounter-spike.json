@@ -1,0 +1,425 @@
+{
+ "schema_version": 1,
+ "site": "https://wordcounter.net/",
+ "captured_at": "2026-10-23T03:05:00Z",
+ "browser": "Chromium 152.0.7977.167 (pane del escritorio de Claude, Windows 10)",
+ "configuration": "por defecto (Keyword Density x1)",
+ "method": "textarea #box: asignación de value + KeyboardEvent('keyup'), lectura de #word_count, #character_count y #kwd-accordion-data tras 1,1–1,5 s; 3 textos confirmados además con tipeo real",
+ "observations": [
+  {
+   "text": "the quick brown fox jumps over the lazy dog",
+   "words": 9,
+   "characters": 43,
+   "keywords": [
+    "quick=1",
+    "brown=1",
+    "fox=1",
+    "jumps=1",
+    "over=1",
+    "lazy=1",
+    "dog=1"
+   ]
+  },
+  {
+   "text": "farmatodo cuida tu salud todos los dias",
+   "words": 7,
+   "characters": 39,
+   "keywords": [
+    "farmatodo=1",
+    "cuida=1",
+    "tu=1",
+    "salud=1",
+    "todos=1",
+    "los=1",
+    "dias=1"
+   ]
+  },
+  {
+   "text": "salud",
+   "words": 1,
+   "characters": 5,
+   "keywords": [
+    "salud=1"
+   ]
+  },
+  {
+   "text": "farmatodo farmatodo farmatodo farmatodo farmatodo cuida cuida tu salud\nfarmatodo cuida toda tu salud",
+   "words": 14,
+   "characters": 99,
+   "keywords": [
+    "farmatodo=6",
+    "cuida=3",
+    "tu=2",
+    "salud=2",
+    "toda=1"
+   ]
+  },
+  {
+   "text": "  hola   mundo  ",
+   "words": 2,
+   "characters": 16,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "hola  mundo",
+   "words": 2,
+   "characters": 11,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "Hola, mundo. Hola; mundo! (hola)",
+   "words": 5,
+   "characters": 32,
+   "keywords": [
+    "hola=3",
+    "mundo=2"
+   ]
+  },
+  {
+   "text": "hola - mundo",
+   "words": 2,
+   "characters": 12,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "Salud salud SALUD bienestar Bienestar vida",
+   "words": 6,
+   "characters": 42,
+   "keywords": [
+    "salud=3",
+    "bienestar=2",
+    "vida=1"
+   ]
+  },
+  {
+   "text": "linea uno\nlinea dos\nlinea tres",
+   "words": 6,
+   "characters": 28,
+   "keywords": [
+    "linea=3",
+    "uno=1",
+    "dos=1",
+    "tres=1"
+   ]
+  },
+  {
+   "text": "beta beta alfa alfa gamma gamma delta",
+   "words": 7,
+   "characters": 37,
+   "keywords": [
+    "beta=2",
+    "alfa=2",
+    "gamma=2",
+    "delta=1"
+   ]
+  },
+  {
+   "text": "niño niño camión camión camión acción",
+   "words": 6,
+   "characters": 37,
+   "keywords": [
+    "camión=3",
+    "niño=2",
+    "acción=1"
+   ]
+  },
+  {
+   "text": "e-commerce 2026 don't 3.5 x-ray",
+   "words": 5,
+   "characters": 31,
+   "keywords": [
+    "e-commerce=1",
+    "x-ray=1"
+   ]
+  },
+  {
+   "text": "the the the and and data data data data",
+   "words": 9,
+   "characters": 39,
+   "keywords": [
+    "data=4"
+   ]
+  },
+  {
+   "text": "hola 👋 mundo 🌎",
+   "words": 4,
+   "characters": 16,
+   "keywords": [
+    "hola=1",
+    "👋=1",
+    "mundo=1",
+    "🌎=1"
+   ],
+   "defect": {
+    "bug": "BUG-WC-004",
+    "note": "el contador muestra 16 caracteres para 14 caracteres percibidos"
+   }
+  },
+  {
+   "text": "pera naranja limon naranja pera naranja limon naranja kiwi naranja limon",
+   "words": 11,
+   "characters": 72,
+   "keywords": [
+    "naranja=5",
+    "limon=3",
+    "pera=2",
+    "kiwi=1"
+   ]
+  },
+  {
+   "text": "naranja naranja naranja naranja naranja limon limon limon pera pera kiwi",
+   "words": 11,
+   "characters": 72,
+   "keywords": [
+    "naranja=5",
+    "limon=3",
+    "pera=2",
+    "kiwi=1"
+   ]
+  },
+  {
+   "text": "uno\tdos",
+   "words": 2,
+   "characters": 7,
+   "keywords": [
+    "uno=1",
+    "dos=1"
+   ]
+  },
+  {
+   "text": "uno dos",
+   "words": 2,
+   "characters": 7,
+   "keywords": [
+    "uno dos=1"
+   ],
+   "defect": {
+    "bug": "BUG-WC-003",
+    "fields": [
+     "keywords"
+    ],
+    "note": "Keyword Density no separa en NBSP aunque el contador sí"
+   }
+  },
+  {
+   "text": "",
+   "words": 0,
+   "characters": 0,
+   "keywords": []
+  },
+  {
+   "text": "a b c",
+   "words": 3,
+   "characters": 5,
+   "keywords": []
+  },
+  {
+   "text": "I am a an it is",
+   "words": 6,
+   "characters": 15,
+   "keywords": []
+  },
+  {
+   "text": "hola,mundo",
+   "words": 2,
+   "characters": 10,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "hola.mundo",
+   "words": 1,
+   "characters": 10,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ],
+   "defect": {
+    "bug": "BUG-WC-001",
+    "fields": [],
+    "note": "contador: 1 palabra; Keyword Density: 2 entradas (inconsistencia)"
+   }
+  },
+  {
+   "text": "hola—mundo",
+   "words": 2,
+   "characters": 10,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "hola/mundo",
+   "words": 2,
+   "characters": 10,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "---",
+   "words": 0,
+   "characters": 3,
+   "keywords": [
+    "---=1"
+   ],
+   "defect": {
+    "bug": "BUG-WC-002",
+    "fields": [
+     "keywords"
+    ],
+    "note": "0 palabras pero '---' aparece como palabra clave"
+   }
+  },
+  {
+   "text": "1,000 2.000",
+   "words": 2,
+   "characters": 11,
+   "keywords": []
+  },
+  {
+   "text": "b c d",
+   "words": 3,
+   "characters": 5,
+   "keywords": []
+  },
+  {
+   "text": "xx yy zz",
+   "words": 3,
+   "characters": 8,
+   "keywords": [
+    "xx=1",
+    "yy=1",
+    "zz=1"
+   ]
+  },
+  {
+   "text": "don’t don't",
+   "words": 2,
+   "characters": 11,
+   "keywords": []
+  },
+  {
+   "text": "Café café CAFÉ",
+   "words": 3,
+   "characters": 14,
+   "keywords": [
+    "café=3"
+   ]
+  },
+  {
+   "text": "café café",
+   "words": 2,
+   "characters": 10,
+   "keywords": [
+    "café=1",
+    "café=1"
+   ],
+   "defect": {
+    "bug": "OBS-WC-002",
+    "fields": [],
+    "note": "formas NFD y NFC se listan por separado (oportunidad de mejora)"
+   }
+  },
+  {
+   "text": "zorro árbol árbol zorro",
+   "words": 4,
+   "characters": 23,
+   "keywords": [
+    "zorro=2",
+    "árbol=2"
+   ]
+  },
+  {
+   "text": "mundo mundo hola hola",
+   "words": 4,
+   "characters": 21,
+   "keywords": [
+    "mundo=2",
+    "hola=2"
+   ]
+  },
+  {
+   "text": "hola\r\nmundo",
+   "words": 2,
+   "characters": 9,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "hola\n\nmundo",
+   "words": 2,
+   "characters": 9,
+   "keywords": [
+    "hola=1",
+    "mundo=1"
+   ]
+  },
+  {
+   "text": "el la de que y en",
+   "words": 6,
+   "characters": 17,
+   "keywords": [
+    "el=1",
+    "la=1",
+    "de=1",
+    "que=1",
+    "en=1"
+   ]
+  },
+  {
+   "text": "should would could",
+   "words": 3,
+   "characters": 18,
+   "keywords": [
+    "should=1",
+    "could=1"
+   ],
+   "defect": {
+    "bug": "OBS-WC-001",
+    "fields": [],
+    "note": "'would' se excluye como stop word pero 'should' y 'could' no (lista incompleta)"
+   }
+  },
+  {
+   "text": "test test. test! TEST?",
+   "words": 4,
+   "characters": 22,
+   "keywords": [
+    "test=4"
+   ]
+  },
+  {
+   "text": "a​b",
+   "words": 1,
+   "characters": 3,
+   "keywords": [
+    "a​b=1"
+   ]
+  },
+  {
+   "text": "uno dos",
+   "words": 2,
+   "characters": 7,
+   "keywords": [
+    "uno=1",
+    "dos=1"
+   ]
+  }
+ ]
+}

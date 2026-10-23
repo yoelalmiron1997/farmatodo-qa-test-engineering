@@ -1,0 +1,162 @@
+# Fuente única de requisitos. Editar aquí; el catálogo y la matriz se generan.
+schema_version: 1
+requirements:
+- id: REQ-WC-001
+  source: PDF §1
+  exercise: E1
+  verification: test
+  statement: WordCounter muestra correctamente el número de palabras del texto ingresado.
+  acceptance_criteria:
+  - Para todo texto de prueba del catálogo, el contador de palabras visible es igual al valor calculado por el oráculo independiente.
+  - El valor se actualiza sin recargar la página tras modificar el texto.
+- id: REQ-WC-002
+  source: PDF §1
+  exercise: E1
+  verification: test
+  statement: WordCounter muestra correctamente el número de caracteres del texto ingresado.
+  acceptance_criteria:
+  - El contador de caracteres visible es igual al valor del oráculo para todo texto del catálogo.
+  - La regla de conteo (espacios, saltos de línea, Unicode) queda documentada a partir de la exploración (H-02, H-08).
+- id: REQ-WC-003
+  source: PDF §1
+  exercise: E1
+  verification: test
+  statement: La sección Keyword Density muestra las 3 palabras más repetidas con su número de repeticiones.
+  acceptance_criteria:
+  - Las 3 primeras filas de Keyword Density coinciden en palabra y cantidad con el top-3 del oráculo.
+  - Los datos P0 evitan empates en el top-3 para que el orden esperado sea inequívoco.
+  - El comportamiento por defecto (stop words, mayúsculas, puntuación, empates) queda documentado (H-03).
+- id: REQ-WC-004
+  source: PDF §1 (Requisitos)
+  exercise: E1
+  verification: inspection
+  statement: Las pruebas usan siempre la configuración por defecto del sitio, sin modificarla.
+  acceptance_criteria:
+  - Ningún Page Object expone ni invoca acciones sobre las opciones del sitio.
+  - Cada test parte de un perfil de navegador nuevo, sin estado persistido (localStorage/cookies).
+- id: REQ-RPT-001
+  source: PDF §1
+  exercise: E1
+  verification: test
+  statement: Se genera un reporte resumen con escenarios ejecutados, aprobados y fallidos, junto con la descripción del error.
+  acceptance_criteria:
+  - El reporte muestra totales ejecutados / aprobados / fallidos (y por separado omitidos, bloqueados y flaky).
+  - Cada fallo incluye Case ID, título, mensaje de error legible (esperado vs. actual) y referencia a evidencia.
+  - El reporte se genera desde resultados estructurados, nunca desde los Page Objects.
+- id: REQ-DEL-001
+  source: PDF §1 y §4
+  exercise: E1/E4
+  verification: test
+  statement: El proyecto se entrega en un repositorio de GitHub con instrucciones detalladas de ejecución.
+  acceptance_criteria:
+  - Un clon limpio siguiendo solo el README ejecuta las pruebas unitarias y el algoritmo del Ejercicio 4.
+  - El README documenta instalación, ejecución E2E, reportes, suposiciones y limitaciones.
+- id: REQ-BUG-001
+  source: PDF §2
+  exercise: E2
+  verification: demonstration
+  statement: Se entrega un reporte breve de defectos u oportunidades de mejora de WordCounter.
+  acceptance_criteria:
+  - Cada hallazgo tiene ID, título, severidad/tipo, precondiciones, pasos, esperado, actual, evidencia y entorno.
+  - Solo se reportan hallazgos reproducidos al menos dos veces y con evidencia; las mejoras se distinguen de los defectos.
+- id: REQ-UX-001
+  source: PDF §3
+  exercise: E3
+  verification: demonstration
+  statement: Se entrega un reporte con 3 problemas de UX de farmatodo.com, con explicación, forma de replicarlo y vista (desktop, responsive o mobile).
+  acceptance_criteria:
+  - Exactamente 3 hallazgos principales, cada uno con vista, pasos, evidencia visual, impacto y propuesta de mejora.
+  - Los bloqueos de acceso (geo, bot-protection, login) se documentan, no se omiten.
+- id: REQ-ALG-001
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: El algoritmo lee un archivo de texto.
+  acceptance_criteria:
+  - Acepta una ruta por CLI; archivo inexistente o no decodificable produce mensaje claro y código de salida distinto de 0.
+- id: REQ-ALG-002
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: El algoritmo cuenta la frecuencia de cada palabra.
+  acceptance_criteria:
+  - La frecuencia es insensible a mayúsculas y la puntuación no forma parte de la palabra (decisión D-ALG-1).
+- id: REQ-ALG-003
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: El algoritmo cuenta el total de palabras.
+  acceptance_criteria:
+  - Para el ejemplo del PDF imprime `14 words`.
+- id: REQ-ALG-004
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: El algoritmo cuenta caracteres incluyendo espacios y excluyendo saltos de línea.
+  acceptance_criteria:
+  - Para el ejemplo del PDF imprime `99 characters`.
+  - '`\n` y `\r` no se cuentan; espacios y tabulaciones sí.'
+- id: REQ-ALG-005
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: El algoritmo construye un histograma de palabras y su frecuencia.
+  acceptance_criteria:
+  - La salida por defecto respeta el formato del ejemplo; `--histogram` agrega barras proporcionales (decisión D-ALG-3, pregunta Q-03).
+- id: REQ-ALG-006
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: La salida ordena por ocurrencias descendentes y, en empate, alfabéticamente.
+  acceptance_criteria:
+  - 'En el ejemplo, `salud: 2` precede a `tu: 2`.'
+  - El criterio alfabético es determinista y documentado (D-ALG-2).
+- id: REQ-ALG-007
+  source: PDF §4
+  exercise: E4
+  verification: analysis
+  statement: Se explica la complejidad computacional del algoritmo.
+  acceptance_criteria:
+  - Se documentan complejidad temporal y espacial con su justificación y supuestos.
+- id: REQ-ALG-008
+  source: PDF §4
+  exercise: E4
+  verification: test
+  statement: La salida coincide exactamente con el ejemplo del PDF.
+  acceptance_criteria:
+  - Comparación byte a byte (golden file) de la salida estándar para el archivo de ejemplo.
+- id: REQ-QA-001
+  source: Consigna §8
+  exercise: Derivado
+  verification: test
+  statement: La suite detecta, clasifica y reporta flaky tests sin ocultar fallos.
+  acceptance_criteria:
+  - Cada intento queda registrado; un flaky observado nunca se presenta como PASS limpio; el quality gate aplica la política configurada.
+- id: REQ-QA-002
+  source: Consigna §9
+  exercise: Derivado
+  verification: test
+  statement: Se realizan mediciones ligeras de performance con contexto y estadística descriptiva.
+  acceptance_criteria:
+  - Sin concurrencia, con muestras limitadas, baseline antes de umbrales y advertencias de robustez estadística.
+- id: REQ-QA-003
+  source: Consigna §4 y §11
+  exercise: Derivado
+  verification: test
+  statement: La trazabilidad requisito→caso→código→resultado→evidencia se genera y valida automáticamente.
+  acceptance_criteria:
+  - El pipeline falla ante IDs duplicados, huérfanos, campos ausentes, prioridades desconocidas o tests sin Case ID.
+- id: REQ-QA-004
+  source: Consigna §10, §12–14
+  exercise: Derivado
+  verification: demonstration
+  statement: CI/CD ejecuta las suites, conserva historial y publica un portal estático con datos reales.
+  acceptance_criteria:
+  - El portal se publica aun con tests fallidos y muestra el estado real; el historial no se sobrescribe por concurrencia.
+- id: REQ-QA-005
+  source: Consigna §3 y §16
+  exercise: Derivado
+  verification: test
+  statement: Los componentes del framework se prueban aisladamente, sin Selenium, red ni GitHub.
+  acceptance_criteria:
+  - La suite unitaria corre con sockets deshabilitados y en orden aleatorio.

@@ -1,0 +1,73 @@
+# Workflow C — Mediciones ligeras P2: secuenciales, sin concurrencia, muestras limitadas. Nunca en PR.
+name: performance
+
+on:
+  workflow_dispatch:
+    inputs:
+      samples:
+        description: Muestras por escenario (máximo 10)
+        default: "5"
+        required: false
+  schedule:
+    - cron: "43 10 * * 1" # semanal, lunes
+
+permissions: {}
+
+concurrency:
+  group: performance
+  cancel-in-progress: false
+
+env:
+  QA_HEADLESS: "true"
+  QA_PERF_SAMPLES: ${{ inputs.samples || '5' }}
+  QA_PERF_WARMUP: "1"
+
+jobs:
+  measure:
+    name: Medir
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --group dev
+      - name: Contexto del entorno
+        run: |
+          google-chrome --version
+          echo "Runner: $RUNNER_OS $ImageOS $ImageVersion"
+      - name: Mediciones (sin reintentos)
+        id: perf
+        run: |
+          set +e
+          uv run pytest tests/performance -p no:randomly --qa-results-dir reports --junitxml reports/junit-perf.xml
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Normalizar resultados
+        if: always()
+        run: uv run qa results build --results-dir reports --workflow performance --scope performance --out reports/run-result.json
+      - name: Reporte resumen
+        if: always()
+        run: uv run qa report summary --run reports/run-result.json --out-dir reports --github-summary
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: performance-reports
+          path: reports/
+          retention-days: 30
+      - name: Quality gate (P2 → advertencias; bloquea solo si no hubo medición posible)
+        run: uv run qa gate --run reports/run-result.json
+
+  history:
+    name: Persistir historial
+    needs: measure
+    if: always() && github.ref == 'refs/heads/main' && needs.measure.result != 'cancelled'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/persist-history.yml
+    with:
+      artifact-name: performance-reports

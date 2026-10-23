@@ -1,0 +1,24 @@
+# Política del quality gate (SDD Anexo C.5). Editar aquí; el código no cambia.
+schema_version: 1
+gates:
+  critical:
+    priorities: [P0]
+    on_fail: block          # un fallo final P0 bloquea
+    on_flaky: block         # un flaky observado P0 es inestabilidad que requiere atención
+    on_blocked: inconclusive
+    on_not_run: inconclusive
+  functional:
+    priorities: [P1]
+    on_fail: block          # bloquea el job funcional
+    on_flaky: warn
+    on_blocked: warn
+    on_not_run: warn
+  complementary:
+    priorities: [P2]
+    on_fail: warn
+    on_flaky: warn
+    on_blocked: warn
+    on_not_run: warn
+known_defect_action: warn   # un FAIL de un caso con known_defect se reporta como fallo conocido
+inconclusive_fails_job: true  # nunca verde sin evidencia
+quarantine: []              # lista explícita y visible; el caso se ejecuta igual

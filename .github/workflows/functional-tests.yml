@@ -1,0 +1,91 @@
+# Workflow B — Suite funcional: unit + integración (sin reintentos) y E2E con Selenium (con reintentos medidos).
+# El estado del job lo decide el quality gate sobre el resultado normalizado; nada se "pinta de verde".
+name: functional-tests
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**.md"]
+  workflow_dispatch:
+    inputs:
+      reruns:
+        description: Reintentos por test E2E (0 los desactiva)
+        default: "2"
+        required: false
+  schedule:
+    - cron: "17 9 * * *" # regresión diaria de baja frecuencia
+
+permissions: {}
+
+concurrency:
+  group: functional-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  QA_HEADLESS: "true"
+  QA_RERUNS: ${{ inputs.reruns || '2' }}
+
+jobs:
+  test:
+    name: Suite funcional
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --group dev
+      - name: Versión de Chrome del runner
+        run: google-chrome --version
+
+      - name: Unit + integración (sin reintentos)
+        id: unit
+        run: |
+          set +e
+          uv run pytest tests/unit tests/integration --qa-results-dir reports --junitxml reports/junit-unit.xml
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: E2E wordcounter.net (Selenium headless, reintentos = ${{ env.QA_RERUNS }})
+        id: e2e
+        run: |
+          set +e
+          uv run pytest tests/e2e --reruns "$QA_RERUNS" --qa-results-dir reports --junitxml reports/junit-e2e.xml
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Normalizar resultados y evaluar el gate
+        if: always()
+        run: uv run qa results build --results-dir reports --workflow functional-tests --scope functional --out reports/run-result.json
+      - name: Reporte resumen (Job Summary)
+        if: always()
+        run: uv run qa report summary --run reports/run-result.json --out-dir reports --github-summary
+      - name: Subir reportes y evidencias
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: functional-reports
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Quality gate (estado real del job)
+        run: uv run qa gate --run reports/run-result.json
+      - name: Errores internos de pytest
+        # 0 = ok, 1 = tests fallidos (ya evaluados por el gate); otro código = error de uso o interno.
+        run: |
+          for code in "${{ steps.unit.outputs.code }}" "${{ steps.e2e.outputs.code }}"; do
+            if [ "$code" != "0" ] && [ "$code" != "1" ]; then echo "pytest terminó con código $code"; exit 1; fi
+          done
+
+  history:
+    name: Persistir historial
+    needs: test
+    if: always() && github.ref == 'refs/heads/main' && needs.test.result != 'cancelled'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/persist-history.yml
+    with:
+      artifact-name: functional-reports

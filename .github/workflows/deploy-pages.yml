@@ -1,0 +1,79 @@
+# Workflow D — Portal de calidad en GitHub Pages.
+# Se publica aunque los tests fallen: el portal muestra el gate real. Desplegar ≠ tests verdes.
+name: deploy-pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", "specs/**", "mkdocs.yml", "README.md", "src/farmatodo_qa/reporting/**"]
+  workflow_run:
+    workflows: [functional-tests, performance]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Construir portal
+    # Nunca desde código de pull requests: solo corridas de main.
+    if: >
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Historial (solo lectura)
+        id: history
+        run: |
+          if git fetch --depth=1 "https://github.com/${GITHUB_REPOSITORY}.git" qa-history; then
+            git worktree add history FETCH_HEAD && echo "dir=history" >> "$GITHUB_OUTPUT"
+          else
+            echo "Todavía no hay historial: el portal mostrará 'sin datos'."
+          fi
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --group docs
+      - id: pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Generar páginas desde specs + historial
+        run: |
+          ARGS="--repository ${GITHUB_REPOSITORY} --ref ${GITHUB_SHA}"
+          if [ -n "${{ steps.history.outputs.dir }}" ]; then ARGS="$ARGS --history-dir history"; fi
+          uv run qa portal build $ARGS
+      - name: MkDocs (--strict)
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}/
+          REPO_URL: https://github.com/${{ github.repository }}
+          REPO_NAME: ${{ github.repository }}
+        run: uv run mkdocs build --strict --site-dir site
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site
+
+  deploy:
+    name: Publicar
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

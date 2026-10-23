@@ -1,0 +1,93 @@
+site_name: Farmatodo QA — Quality Portal
+site_description: Prueba técnica de Ingeniero de Calidad QA — SDD, trazabilidad, ejecución, flaky tests y performance
+site_author: Yoel Almirón
+# site_url y repo_url se completan en CI (deploy-pages) con el repositorio real.
+site_url: !ENV SITE_URL
+repo_url: !ENV REPO_URL
+repo_name: !ENV REPO_NAME
+docs_dir: docs
+use_directory_urls: false
+strict: true
+
+theme:
+  name: material
+  language: es
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: light blue
+      toggle: {icon: material/weather-night, name: Modo oscuro}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: light blue
+      toggle: {icon: material/weather-sunny, name: Modo claro}
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+
+extra_css:
+  - assets/css/qa.css
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js
+  - assets/js/qa.js
+
+# El dashboard generado se incluye en index.md con pymdownx.snippets; no es una página propia.
+exclude_docs: |
+  generated/dashboard.md
+
+not_in_nav: |
+  generated/cases/*.md
+  generated/decisions/*.md
+  bugs/BUG-*.md
+  bugs/OBS-*.md
+  ux/UX-*.md
+
+nav:
+  - Quality Dashboard: index.md
+  - Especificación:
+      - SDD: generated/sdd.md
+      - Estrategia: strategy/index.md
+      - Requisitos: generated/requirements.md
+      - Casos de prueba: generated/test-cases.md
+      - Trazabilidad: generated/traceability.md
+      - Indicadores: strategy/metrics.md
+  - Ejecución:
+      - Test Execution: generated/execution.md
+      - Flaky Tests: generated/flaky.md
+      - Performance: generated/performance.md
+  - Hallazgos:
+      - Bugs (Ej. 2): bugs/index.md
+      - UX Farmatodo (Ej. 3): ux/index.md
+      - Spike WordCounter: exploration/wordcounter-spike.md
+  - Algoritmo (Ej. 4): algorithm.md
+  - Ingeniería:
+      - Arquitectura: architecture/index.md
+      - Decisiones (ADR): decisions.md
+  - Conclusiones: conclusions.md
