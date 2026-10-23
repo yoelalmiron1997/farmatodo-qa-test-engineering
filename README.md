@@ -38,7 +38,29 @@ flowchart LR
 
 ## Tecnologías
 
-Python 3.12 · [uv](https://docs.astral.sh/uv/) (lockfile) · Selenium 4 (Selenium Manager) · Pytest 8 + pytest-rerunfailures, pytest-randomly y pytest-socket · coverage.py · Pydantic 2 · MkDocs Material + Mermaid · Ruff · mypy `--strict` · import-linter · GitHub Actions + GitHub Pages.
+Las versiones son las del lockfile (`uv.lock`): local y CI usan exactamente las mismas.
+
+| Área | Tecnología | Versión | Para qué se usa |
+|---|---|---|---|
+| Lenguaje y entorno | [Python](https://www.python.org/) | 3.12 | Todo el framework y el algoritmo del ejercicio 4 |
+| | [uv](https://docs.astral.sh/uv/) | — | Instala Python y dependencias desde el lockfile: un solo comando, el mismo resultado en cualquier máquina |
+| Automatización UI | [Selenium WebDriver](https://www.selenium.dev/) | 4.51 | Pruebas E2E sobre wordcounter.net con Page Object Model. Selenium Manager descarga el driver compatible con el Chrome instalado |
+| Ejecución de pruebas | [Pytest](https://docs.pytest.org/) | 8.4 | Runner de unit, integración, E2E y performance. Un plugin propio registra cada intento, los estados y las evidencias |
+| | [pytest-rerunfailures](https://github.com/pytest-dev/pytest-rerunfailures) | 16.7 | Reintentos en E2E. Un test que pasa al reintentar se marca FLAKY, no PASS |
+| | [pytest-randomly](https://github.com/pytest-dev/pytest-randomly) | 5.0 | Orden aleatorio de los tests: detecta dependencias ocultas entre ellos |
+| | [pytest-socket](https://github.com/miketheman/pytest-socket) | 0.8 | Bloquea la red en los tests unitarios: garantiza que no dependen de sitios externos |
+| | [coverage.py](https://coverage.readthedocs.io/) | 7.17 | Cobertura de código del framework (90 %) |
+| Modelos y datos | [Pydantic](https://docs.pydantic.dev/) | 2.14 | Valida los casos de prueba (YAML), los resultados de cada corrida (schema v1) y la política del quality gate |
+| | [PyYAML](https://pyyaml.org/) | 6.0 | Lee el front matter de los casos `TC-*.md` y la configuración |
+| Calidad de código | [Ruff](https://docs.astral.sh/ruff/) | 0.17 | Lint y formato |
+| | [mypy](https://mypy-lang.org/) | 2.4 | Tipado estático en modo `--strict` |
+| | [import-linter](https://import-linter.readthedocs.io/) | 2.15 | Tres contratos de arquitectura: el núcleo no puede importar Selenium, pytest ni infraestructura |
+| Portal y reportes | [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) | 9.7 | Portal de calidad generado desde las specs y el historial |
+| | [Mermaid](https://mermaid.js.org/) · [Chart.js](https://www.chartjs.org/) | — · 4.4 | Diagramas de arquitectura y gráficos de tendencia en el portal |
+| | Chrome headless | — | Imprime el reporte resumen a PDF en CI |
+| CI/CD | [GitHub Actions](https://docs.github.com/actions) | — | Seis workflows con acciones fijadas por SHA y permisos mínimos |
+| | [GitHub Pages](https://pages.github.com/) | — | Publica el portal |
+| | [Dependabot](https://docs.github.com/code-security/dependabot) | — | Propone actualizaciones de dependencias y acciones |
 
 ## Instalación
 
