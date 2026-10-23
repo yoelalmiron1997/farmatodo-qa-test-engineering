@@ -18,6 +18,9 @@
   ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
   li { margin-bottom: .8mm; }
   a { color: var(--brand); text-decoration: none; }
+  h3 a { color: inherit; border-bottom: 1px dotted var(--brand); }
+  .links-box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 2mm 3mm; margin: 0 0 3mm; font-size: 9pt; background: #fff; }
+  .links-box b { color: var(--brand); }
   code, pre { font-family: "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; font-size: 8.8pt; }
   code { background: var(--soft); padding: 0 1mm; border-radius: 1mm; }
   pre { background: var(--soft); border: 1px solid var(--line); border-radius: 1.5mm; padding: 2.5mm 3mm; margin: 0 0 2.5mm; white-space: pre-wrap; break-inside: avoid; }
@@ -66,6 +69,7 @@
   <table class="links">
     <tr><td>Repositorio</td><td><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering">github.com/yoelalmiron1997/farmatodo-qa-test-engineering</a></td></tr>
     <tr><td>Portal de calidad</td><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/">yoelalmiron1997.github.io/farmatodo-qa-test-engineering</a> (resultados reales de cada corrida)</td></tr>
+    <tr><td>Última ejecución</td><td><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/39992999223">functional-tests #39992999223</a> · resultados en el <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/execution.html">portal → Test Execution</a></td></tr>
     <tr><td>Ejecuciones</td><td><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml">GitHub Actions → functional-tests</a> (reporte resumen y evidencias por corrida)</td></tr>
   </table>
 
@@ -89,6 +93,7 @@
 <div class="section">
   <h2>Ejercicio 1 — Suite automatizada de wordcounter.net</h2>
 
+<div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/test-cases.html">Casos de prueba</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/execution.html">Ejecución de la suite</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/flaky.html">Flaky tests</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/traceability.html">Trazabilidad</a> · <a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/39992999223">Corrida en GitHub Actions</a></div>
   <h3>Qué valida</h3>
   <p>Los tres objetivos del enunciado, cada uno con un caso P0 y casos de borde:</p>
   <ol>
@@ -107,29 +112,29 @@
   </ul>
 
   <h3>Casos y resultado de la última corrida en CI</h3>
-  <p class="muted">functional-tests #39992999223 · 2026-10-23 17:11 UTC · Ubuntu 24.04 · Chrome 155 headless · Python 3.12 · Selenium 4.51</p>
+  <p class="muted"><a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/39992999223">functional-tests #39992999223</a> · 2026-10-23 17:11 UTC · Ubuntu 24.04 · Chrome 155 headless · Python 3.12 · Selenium 4.51</p>
   <table>
     <tr><th style="width:20mm">Caso</th><th>Escenario</th><th style="width:11mm">Prio.</th><th style="width:16mm">Resultado</th></tr>
-    <tr><td>TC-WC-001</td><td>Conteo básico de palabras</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-002</td><td>Conteo básico de caracteres</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-003</td><td>Top 3 de Keyword Density sin empates</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-004</td><td>Texto de ejemplo del PDF en WordCounter</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-005</td><td>Espacios adicionales, iniciales y finales</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-006</td><td>Signos de puntuación</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-007</td><td>Mayúsculas y minúsculas en Keyword Density</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-008</td><td>Actualización del contenido</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-009</td><td>Borrado total del texto</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-010</td><td>Texto multilínea</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-011</td><td>Empates en el top 3 de Keyword Density</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-012</td><td>Acentos y ñ (texto en español)</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-013</td><td>Números, guiones y apóstrofes</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-014</td><td>Texto extenso</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-015</td><td>Keyword Density con <i>stop words</i></td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-016</td><td>Emojis y caracteres fuera del BMP</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
-    <tr><td>TC-WC-017</td><td>Reproducción BUG-WC-001: punto sin espacio</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
-    <tr><td>TC-WC-018</td><td>Reproducción BUG-WC-002: palabra formada solo por guiones</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
-    <tr><td>TC-WC-019</td><td>Reproducción BUG-WC-003: espacio no separable</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
-    <tr><td>TC-WC-020</td><td>Reproducción BUG-WC-004: emojis en caracteres</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-001.html">TC-WC-001</a></td><td>Conteo básico de palabras</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-002.html">TC-WC-002</a></td><td>Conteo básico de caracteres</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-003.html">TC-WC-003</a></td><td>Top 3 de Keyword Density sin empates</td><td>P0</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-004.html">TC-WC-004</a></td><td>Texto de ejemplo del PDF en WordCounter</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-005.html">TC-WC-005</a></td><td>Espacios adicionales, iniciales y finales</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-006.html">TC-WC-006</a></td><td>Signos de puntuación</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-007.html">TC-WC-007</a></td><td>Mayúsculas y minúsculas en Keyword Density</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-008.html">TC-WC-008</a></td><td>Actualización del contenido</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-009.html">TC-WC-009</a></td><td>Borrado total del texto</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-010.html">TC-WC-010</a></td><td>Texto multilínea</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-011.html">TC-WC-011</a></td><td>Empates en el top 3 de Keyword Density</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-012.html">TC-WC-012</a></td><td>Acentos y ñ (texto en español)</td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-013.html">TC-WC-013</a></td><td>Números, guiones y apóstrofes</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-014.html">TC-WC-014</a></td><td>Texto extenso</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-015.html">TC-WC-015</a></td><td>Keyword Density con <i>stop words</i></td><td>P1</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-016.html">TC-WC-016</a></td><td>Emojis y caracteres fuera del BMP</td><td>P2</td><td><span class="tag pass">PASS</span></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-017.html">TC-WC-017</a></td><td>Reproducción BUG-WC-001: punto sin espacio</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-018.html">TC-WC-018</a></td><td>Reproducción BUG-WC-002: palabra formada solo por guiones</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-019.html">TC-WC-019</a></td><td>Reproducción BUG-WC-003: espacio no separable</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-020.html">TC-WC-020</a></td><td>Reproducción BUG-WC-004: emojis en caracteres</td><td>P2</td><td><span class="tag fail">FAIL</span> conocido</td></tr>
   </table>
   <p class="muted">TC-WC-017…020 describen el comportamiento correcto y fallan mientras el defecto exista. Cuando WordCounter los corrija, pasarán solos.</p>
 
@@ -145,12 +150,13 @@
   </div>
   <table>
     <tr><th style="width:20mm">Caso</th><th style="width:20mm">Categoría</th><th>Descripción del error</th></tr>
-    <tr><td>TC-WC-017</td><td>assertion</td><td>Keyword Density lista 2 entradas para <code>hola.mundo</code>, pero el contador indica 1 palabra (BUG-WC-001)</td></tr>
-    <tr><td>TC-WC-018</td><td>assertion</td><td><code>---</code> aparece en Keyword Density con 0 palabras contadas (BUG-WC-002)</td></tr>
-    <tr><td>TC-WC-019</td><td>assertion</td><td>Keyword Density muestra <code>uno dos</code> como una sola entrada cuando el espacio es NBSP (BUG-WC-003)</td></tr>
-    <tr><td>TC-WC-020</td><td>assertion</td><td>16 caracteres en lugar de 14: cada emoji suma 2 (BUG-WC-004)</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-017.html">TC-WC-017</a></td><td>assertion</td><td>Keyword Density lista 2 entradas para <code>hola.mundo</code>, pero el contador indica 1 palabra (BUG-WC-001)</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-018.html">TC-WC-018</a></td><td>assertion</td><td><code>---</code> aparece en Keyword Density con 0 palabras contadas (BUG-WC-002)</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-019.html">TC-WC-019</a></td><td>assertion</td><td>Keyword Density muestra <code>uno dos</code> como una sola entrada cuando el espacio es NBSP (BUG-WC-003)</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/cases/TC-WC-020.html">TC-WC-020</a></td><td>assertion</td><td>16 caracteres en lugar de 14: cada emoji suma 2 (BUG-WC-004)</td></tr>
   </table>
-  <p><b>Quality gate: WARN.</b> Los cuatro fallos son defectos conocidos y documentados, así que el pipeline no se bloquea pero los deja visibles. Un fallo nuevo en un P0, o un P0 flaky, sí bloquearía.</p>
+  <div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/">Quality Dashboard</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/execution.html">Test Execution</a> · <a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/39992999223">Reporte resumen y artifact functional-reports</a></div>
+<p><b>Quality gate: WARN.</b> Los cuatro fallos son defectos conocidos y documentados, así que el pipeline no se bloquea pero los deja visibles. Un fallo nuevo en un P0, o un P0 flaky, sí bloquearía.</p>
 
   <h3>Cómo ejecutarla</h3>
 <pre>git clone https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering.git
@@ -164,21 +170,22 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
 <!-- ============================================================ EJERCICIO 2 -->
 <div class="section">
   <h2>Ejercicio 2 — Reporte de fallas de wordcounter.net</h2>
+<div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/index.html">Reporte de fallas en el portal</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/exploration/wordcounter-spike.html">Spike de WordCounter</a></div>
   <p>Exploración funcional guiada por charters, sobre la configuración por defecto. Solo se reportan hallazgos reproducidos al menos dos veces y con evidencia. Cada defecto tiene además un test automatizado que lo reproduce.</p>
   <p class="meta">Entorno: Windows 10 · Chromium 152.0.7977.167 · viewport 808 × 912 · 23/10/2026. Severidad: <b>Mayor</b> = distorsiona el resultado principal en un uso frecuente; <b>Menor</b> = resultado incorrecto en un caso poco frecuente.</p>
 
   <table>
     <tr><th style="width:22mm">ID</th><th style="width:15mm">Tipo</th><th style="width:16mm">Severidad</th><th>Título</th></tr>
-    <tr><td>BUG-WC-001</td><td>Defecto</td><td>Menor</td><td>Contador y Keyword Density no coinciden ante un punto sin espacio</td></tr>
-    <tr><td>BUG-WC-002</td><td>Defecto</td><td>Menor</td><td>Un token formado solo por guiones aparece como palabra clave con 0 palabras</td></tr>
-    <tr><td>BUG-WC-003</td><td>Defecto</td><td><b>Mayor</b></td><td>Keyword Density no separa palabras unidas por espacio no separable (NBSP)</td></tr>
-    <tr><td>BUG-WC-004</td><td>Defecto</td><td>Menor</td><td>Cada emoji cuenta como 2 caracteres</td></tr>
-    <tr><td>OBS-WC-001</td><td>Mejora</td><td>—</td><td>Lista de <i>stop words</i> incompleta e inconsistente</td></tr>
-    <tr><td>OBS-WC-002</td><td>Mejora</td><td>—</td><td>La misma palabra en NFC y NFD se lista dos veces</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-001.html">BUG-WC-001</a></td><td>Defecto</td><td>Menor</td><td>Contador y Keyword Density no coinciden ante un punto sin espacio</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-002.html">BUG-WC-002</a></td><td>Defecto</td><td>Menor</td><td>Un token formado solo por guiones aparece como palabra clave con 0 palabras</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-003.html">BUG-WC-003</a></td><td>Defecto</td><td><b>Mayor</b></td><td>Keyword Density no separa palabras unidas por espacio no separable (NBSP)</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-004.html">BUG-WC-004</a></td><td>Defecto</td><td>Menor</td><td>Cada emoji cuenta como 2 caracteres</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/OBS-WC-001.html">OBS-WC-001</a></td><td>Mejora</td><td>—</td><td>Lista de <i>stop words</i> incompleta e inconsistente</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/OBS-WC-002.html">OBS-WC-002</a></td><td>Mejora</td><td>—</td><td>La misma palabra en NFC y NFD se lista dos veces</td></tr>
   </table>
 
   <div class="finding">
-    <h3>BUG-WC-001 — Contador y Keyword Density no coinciden ante un punto sin espacio</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-001.html">BUG-WC-001</a> — Contador y Keyword Density no coinciden ante un punto sin espacio</h3>
     <div class="meta">Severidad: Menor · Prioridad: media · Caso automatizado: TC-WC-017</div>
     <div class="twocol">
       <div>
@@ -193,7 +200,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   </div>
 
   <div class="finding">
-    <h3>BUG-WC-002 — Un token formado solo por guiones aparece como palabra clave con 0 palabras</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-002.html">BUG-WC-002</a> — Un token formado solo por guiones aparece como palabra clave con 0 palabras</h3>
     <div class="meta">Severidad: Menor · Prioridad: baja · Caso automatizado: TC-WC-018</div>
     <div class="twocol">
       <div>
@@ -208,7 +215,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   </div>
 
   <div class="finding">
-    <h3>BUG-WC-003 — Keyword Density no separa palabras unidas por espacio no separable (NBSP)</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-003.html">BUG-WC-003</a> — Keyword Density no separa palabras unidas por espacio no separable (NBSP)</h3>
     <div class="meta">Severidad: <b>Mayor</b> · Prioridad: alta · Caso automatizado: TC-WC-019</div>
     <div class="twocol">
       <div>
@@ -223,7 +230,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   </div>
 
   <div class="finding">
-    <h3>BUG-WC-004 — Cada emoji cuenta como 2 caracteres</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/BUG-WC-004.html">BUG-WC-004</a> — Cada emoji cuenta como 2 caracteres</h3>
     <div class="meta">Severidad: Menor · Prioridad: baja · Casos: TC-WC-020 y TC-WC-016</div>
     <div class="twocol">
       <div>
@@ -240,26 +247,27 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   <h3>Oportunidades de mejora</h3>
   <table>
     <tr><th style="width:22mm">ID</th><th>Observación</th><th style="width:60mm">Sugerencia</th></tr>
-    <tr><td>OBS-WC-001</td><td>Con <code>should would could</code>, Keyword Density excluye <code>would</code> pero lista <code>should</code> y <code>could</code>. Las <i>stop words</i> en español (<code>el</code>, <code>la</code>, <code>de</code>, <code>que</code>) nunca se excluyen.</td><td>Documentar y completar la lista, y aplicar la del idioma del texto.</td></tr>
-    <tr><td>OBS-WC-002</td><td><code>café</code> en forma NFC y en NFD (frecuente al copiar desde macOS) aparece como dos entradas distintas.</td><td>Normalizar a NFC antes de contar (el algoritmo del Ej. 4 ya lo hace).</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/OBS-WC-001.html">OBS-WC-001</a></td><td>Con <code>should would could</code>, Keyword Density excluye <code>would</code> pero lista <code>should</code> y <code>could</code>. Las <i>stop words</i> en español (<code>el</code>, <code>la</code>, <code>de</code>, <code>que</code>) nunca se excluyen.</td><td>Documentar y completar la lista, y aplicar la del idioma del texto.</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/OBS-WC-002.html">OBS-WC-002</a></td><td><code>café</code> en forma NFC y en NFD (frecuente al copiar desde macOS) aparece como dos entradas distintas.</td><td>Normalizar a NFC antes de contar (el algoritmo del Ej. 4 ya lo hace).</td></tr>
   </table>
 </div>
 
 <!-- ============================================================ EJERCICIO 3 -->
 <div class="section">
   <h2>Ejercicio 3 — Experiencia de usuario en Farmatodo</h2>
+<div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/index.html">Hallazgos UX en el portal</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-001.html">UX-FT-001</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-002.html">UX-FT-002</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-003.html">UX-FT-003</a></div>
   <p><b>Método:</b> evaluación heurística (10 heurísticas de Nielsen y criterios de WCAG 2.2) sobre búsqueda, detalle de producto, carrito y checkout. Cada hallazgo se reprodujo y se verificó en el DOM. Severidad según la escala de Nielsen (0–4).</p>
   <p class="meta">23/10/2026 · <code>www.farmatodo.com</code> es un selector de país, por eso el análisis se hizo en <code>www.farmatodo.com.co</code> (Colombia). Vistas: desktop a 1366 px, ventana de ~800 px y emulación móvil de 375 px. El checkout exige iniciar sesión: el análisis llega hasta ese paso, sin crear cuentas ni comprar.</p>
 
   <table>
     <tr><th style="width:22mm">ID</th><th style="width:34mm">Vista</th><th style="width:28mm">Flujo</th><th>Problema</th><th style="width:22mm">Severidad</th></tr>
-    <tr><td>UX-FT-001</td><td>Web desktop, ventana de 768–991 px</td><td>Detalle de producto</td><td>No se muestran ni el precio ni el botón de compra</td><td><b>4 — catastrófico</b></td></tr>
-    <tr><td>UX-FT-002</td><td>Web desktop (~800 px)</td><td>Búsqueda</td><td>Los filtros no se reconocen como seleccionables y no funcionan con teclado</td><td>3 — mayor</td></tr>
-    <tr><td>UX-FT-003</td><td>Web desktop (1366 y ~800 px)</td><td>Carrito y checkout</td><td>Se agrega un medicamento con fórmula sin aviso y una bolsa que el usuario no pidió</td><td>3 — mayor</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-001.html">UX-FT-001</a></td><td>Web desktop, ventana de 768–991 px</td><td>Detalle de producto</td><td>No se muestran ni el precio ni el botón de compra</td><td><b>4 — catastrófico</b></td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-002.html">UX-FT-002</a></td><td>Web desktop (~800 px)</td><td>Búsqueda</td><td>Los filtros no se reconocen como seleccionables y no funcionan con teclado</td><td>3 — mayor</td></tr>
+    <tr><td><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-003.html">UX-FT-003</a></td><td>Web desktop (1366 y ~800 px)</td><td>Carrito y checkout</td><td>Se agrega un medicamento con fórmula sin aviso y una bolsa que el usuario no pidió</td><td>3 — mayor</td></tr>
   </table>
 
   <div class="finding flow">
-    <h3>UX-FT-001 — El detalle de producto no muestra precio ni botón de compra entre 768 y 991 px</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-001.html">UX-FT-001</a> — El detalle de producto no muestra precio ni botón de compra entre 768 y 991 px</h3>
     <div class="meta">Vista: web desktop con ventana de 768–991 px (pantalla dividida, laptop chica, zoom alto) · Severidad 4 — catastrófico para ese segmento</div>
     <p><b>Qué pasa.</b> En ese rango, la página muestra imagen, descripción y ficha técnica, pero <b>no el precio ni el botón “Agregar producto”</b>. En móvil existe una barra fija de compra y desde 992 px aparece el bloque de escritorio; en el medio no aparece ninguno.</p>
     <p><b>Cómo replicarlo.</b> Abrir <code>farmatodo.com.co/producto/1000591-ibuprofeno-genfar-800-mg-caja-x-50-tabletas</code>, reducir la ventana a ~800 px y recorrer la página: no aparecen el precio ($17.560) ni el botón. Al ensanchar a 992 px, el bloque aparece.</p>
@@ -274,7 +282,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   </div>
 
   <div class="finding">
-    <h3>UX-FT-002 — Los filtros de búsqueda no se reconocen como seleccionables y no son accesibles</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-002.html">UX-FT-002</a> — Los filtros de búsqueda no se reconocen como seleccionables y no son accesibles</h3>
     <div class="meta">Vista: web desktop (~800 px) · Flujo: búsqueda · Severidad 3 — mayor</div>
     <div class="twocol" style="grid-template-columns: 1fr 70mm">
       <div>
@@ -291,7 +299,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
   </div>
 
   <div class="finding">
-    <h3>UX-FT-003 — El carrito acepta un medicamento con fórmula sin avisar y agrega una bolsa que el usuario no pidió</h3>
+    <h3><a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/UX-FT-003.html">UX-FT-003</a> — El carrito acepta un medicamento con fórmula sin avisar y agrega una bolsa que el usuario no pidió</h3>
     <div class="meta">Vista: web desktop (1366 y ~800 px) · Flujo: detalle → carrito → checkout · Severidad 3 — mayor</div>
     <p><b>Qué pasa.</b> (1) El ibuprofeno 800 mg requiere fórmula médica, pero al agregarlo no aparece ningún aviso, y en el carrito tampoco. (2) Tras agregar solo el ibuprofeno, el carrito muestra <b>2 productos</b>: se suma una “Bolsa Biodegradable Farmatodo” ($600) sin explicación, que desaparece sola al quitar el medicamento.</p>
     <p><b>Cómo replicarlo.</b> En la página del producto a 1366 px, presionar <i>Agregar producto</i>, abrir <code>/carrito</code> y presionar <i>Ir a pagar</i> (abre el login: límite del análisis).</p>
@@ -307,6 +315,7 @@ uv run qa report summary --run reports/run-result.json --out-dir reports</pre>
 <!-- ============================================================ EJERCICIO 4 -->
 <div class="section">
   <h2>Ejercicio 4 — Contador de frecuencia de palabras</h2>
+<div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/algorithm.html">Algoritmo en el portal</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/test-cases.html">Casos TC-ALG</a> · <a href="https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/tree/master/src/farmatodo_qa/word_frequency">Código</a></div>
   <p>Programa en Python que lee un archivo de texto y muestra la cantidad de palabras, la cantidad de caracteres (incluyendo espacios, sin saltos de línea) y la frecuencia de cada palabra, de mayor a menor y alfabéticamente en caso de empate. Solo usa la biblioteca estándar. Código: <code>src/farmatodo_qa/word_frequency/</code>.</p>
 
   <div class="twocol" style="grid-template-columns: 1fr 1fr">
@@ -382,6 +391,7 @@ def analyze_lines(lines: Iterable[str]) -> TextStats:
 <div class="section">
   <h2>Enfoque de calidad y conclusiones</h2>
 
+<div class="links-box"><b>Ver en vivo:</b> <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/sdd.html">SDD</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/strategy/index.html">Estrategia</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/requirements.html">Requisitos</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/architecture/index.html">Arquitectura</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/decisions.html">Decisiones (ADR)</a> · <a href="https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/performance.html">Performance</a></div>
   <h3>Cómo se organizó el trabajo</h3>
   <table>
     <tr><th style="width:42mm">Práctica</th><th>Qué se hizo</th></tr>
@@ -398,12 +408,12 @@ def analyze_lines(lines: Iterable[str]) -> TextStats:
     <li><b>Farmatodo:</b> 3 hallazgos UX. El más grave, UX-FT-001: entre 768 y 991 px no se puede comprar desde el detalle de producto.</li>
   </ul>
 
-  <h3>Limitaciones</h3>
+  <h3>Alcance</h3>
   <ul>
-    <li>Los sitios son de terceros: su disponibilidad y cambios no se controlan. Se mitiga con el estado BLOCKED y categorías de fallo.</li>
-    <li>Las reglas de WordCounter no están documentadas: el oráculo modela 42 observaciones reales.</li>
-    <li>La performance se mide desde runners compartidos: es descriptiva, sin SLA inventados.</li>
-    <li>El checkout de Farmatodo exige cuenta: el análisis UX llega hasta ese paso.</li>
+    <li>wordcounter.net y farmatodo.com se prueban como sitios de terceros: una caída se registra como BLOCKED y un cambio de DOM como fallo categorizado.</li>
+    <li>El oráculo de WordCounter modela 42 observaciones reales del sitio y se prueba contra ellas.</li>
+    <li>La performance es descriptiva y se mide en GitHub Actions; no se fijaron SLA sin datos del negocio.</li>
+    <li>El análisis UX cubre búsqueda, detalle de producto y carrito hasta el inicio de sesión del checkout, sin crear cuentas ni comprar.</li>
   </ul>
 
   <h3>Próximos pasos</h3>

@@ -1,41 +1,90 @@
 # Farmatodo QA Engineering & Quality Intelligence Platform
 
-Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta como un framework de calidad: la especificación va primero, las pruebas están aisladas y priorizadas por riesgo, GitHub Actions las ejecuta y publica un portal con trazabilidad, flaky tests y performance.
+Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta con **Specification-Driven Development**: cada requisito y cada caso de prueba se especifican primero, en archivos versionados. Los tests se vinculan a esa especificación, GitHub Actions los ejecuta y un portal publica la trazabilidad, los resultados, los flaky tests y la performance de cada corrida.
 
 [![pr-checks](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml)
 [![functional-tests](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml)
 [![deploy-pages](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/deploy-pages.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- **Portal de calidad:** https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/
-- **Respuesta completa en PDF (los 4 ejercicios, punto por punto):** [`entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf`](entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf)
-- **Especificación (SDD):** [`specs/SDD.md`](specs/SDD.md) · casos en [`specs/cases/`](specs/cases/) · requisitos en [`specs/requirements/requirements.yaml`](specs/requirements/requirements.yaml)
+| | |
+|---|---|
+| 📊 **Portal de calidad** | https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ |
+| 📄 **Respuesta completa en PDF** | [`entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf`](entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf): los 4 ejercicios, punto por punto |
+| ▶️ **Ejecuciones** | [GitHub Actions → functional-tests](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml) |
+| 📐 **Especificación (SDD)** | [`specs/SDD.md`](specs/SDD.md) · [requisitos](specs/requirements/requirements.yaml) · [casos](specs/cases/) · [decisiones (ADR)](specs/decisions/) |
 
 ## Los cuatro ejercicios
 
-| # | Ejercicio | Resultado |
-|---|---|---|
-| 1 | Suite automatizada de wordcounter.net (palabras, caracteres, top 3 de Keyword Density) + reporte resumen | Selenium + Pytest + Page Object Model; 20 casos E2E con oráculo independiente; reporte resumen por corrida (`reports/summary.md` / `.html` y Job Summary) |
-| 2 | Reporte de fallas de wordcounter.net | 4 defectos confirmados y 2 mejoras, con pasos y capturas: [`docs/bugs/`](docs/bugs/index.md) |
-| 3 | 3 problemas de UX en farmatodo.com | Con vista, réplica, evidencia y propuesta: [`docs/ux/`](docs/ux/index.md) |
-| 4 | Contador de frecuencia de palabras | Algoritmo propio con la salida exacta del PDF y su complejidad: [`docs/algorithm.md`](docs/algorithm.md) |
+| # | Ejercicio | Resultado | Ver en el portal |
+|---|---|---|---|
+| 1 | Suite automatizada de wordcounter.net: palabras, caracteres y top 3 de Keyword Density, con reporte resumen | Selenium + Pytest + Page Object Model. 20 casos E2E contra un oráculo independiente. Reporte resumen por corrida en PDF, HTML y Markdown | [Casos](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/test-cases.html) · [Ejecución](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/execution.html) |
+| 2 | Reporte de fallas de wordcounter.net | 4 defectos confirmados (1 mayor, 3 menores) y 2 mejoras, con pasos, evidencia y un test que reproduce cada defecto | [Bugs](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/bugs/index.html) |
+| 3 | 3 problemas de UX en farmatodo.com | Vista, pasos para replicar, evidencia, verificación en el DOM y propuesta | [UX](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ux/index.html) |
+| 4 | Contador de frecuencia de palabras | Algoritmo propio con la salida exacta del enunciado y análisis de complejidad | [Algoritmo](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/algorithm.html) |
 
-## Cómo funciona
+## Specification-Driven Development
+
+La especificación es la fuente única de verdad: el catálogo de casos, la matriz de trazabilidad y las páginas del portal se generan desde `specs/`, y CI rechaza cualquier cambio que las deje inconsistentes.
 
 ```mermaid
 flowchart LR
-  SDD["SDD + casos<br/>(Markdown + YAML)"] --> T["Tests<br/>unit · integración · E2E · performance"]
-  T --> GA["GitHub Actions"]
-  GA --> M["Métricas<br/>resultado normalizado + quality gate"]
-  M --> H[("rama qa-history")]
-  H --> D["Dashboard<br/>MkDocs Material"]
-  SDD --> D
-  D --> GP["GitHub Pages"]
+  R["Requisito<br/>REQ-*"] --> C["Caso de prueba<br/>TC-*.md + YAML"]
+  C -->|"@pytest.mark.case"| T["Test automatizado"]
+  T --> E["Ejecución en CI<br/>resultado normalizado"]
+  E --> H[("Historial<br/>qa-history")]
+  C --> P["Portal<br/>trazabilidad · resultados · tendencias"]
+  H --> P
 ```
 
-- **Especificación como fuente única.** Cada caso (`specs/cases/TC-*.md`) declara requisitos, riesgo (impacto × probabilidad), prioridad, nivel y pasos. El catálogo, la matriz de trazabilidad y las páginas del portal se generan desde ahí, y `qa specs validate` falla ante cualquier inconsistencia.
-- **Aislamiento.** Navegador y perfil nuevos por test; orden aleatorio; el oráculo calcula el esperado solo desde el texto de entrada; la suite unitaria corre sin red ni Selenium; un contrato de `import-linter` impide que el núcleo dependa de la infraestructura.
-- **Flaky tests visibles.** Cada intento se registra. Un test que falla y luego pasa es FLAKY, nunca PASS. Las caídas del sitio son BLOCKED, no FAIL. El quality gate (`config/quality-gate.yaml`) decide el estado del job.
+| Artefacto | Contenido | Volumen |
+|---|---|---|
+| [`specs/SDD.md`](specs/SDD.md) | Alcance, supuestos, estrategia, matriz de riesgo, criterios de entrada y salida, catálogo e inventario generados | v1.0.1 |
+| [`requirements.yaml`](specs/requirements/requirements.yaml) | Requisitos con origen en el enunciado, criterios de aceptación y forma de verificación | 21 (16 del enunciado + 5 derivados) |
+| [`cases/TC-*.md`](specs/cases/) | Un archivo por caso: front matter YAML (requisitos, riesgo, prioridad, nivel, técnicas) y cuerpo con objetivo, precondiciones, datos, pasos, resultado esperado y criterio de aceptación | 51 casos · P0: 9 · P1: 28 · P2: 14 |
+| [`decisions/ADR-*.md`](specs/decisions/) | Decisiones de arquitectura y de prueba, con contexto y alternativas | 12 ADR |
+
+**Ejemplo de caso** ([`TC-WC-003.md`](specs/cases/TC-WC-003.md)) y su test, vinculados por el marker:
+
+```yaml
+id: TC-WC-003
+title: Top 3 de Keyword Density sin empates
+requirement_ids: [REQ-WC-003]
+priority: P0
+level: e2e
+risk_assessment: { impact: 5, likelihood: 4, score: 20, computed_priority: P0 }
+techniques: [Partición de equivalencia, Diseño de datos para orden inequívoco]
+```
+
+```python
+@pytest.mark.case("TC-WC-003")
+def test_top_three_keywords(wordcounter, oracle, qa_settings, text): ...
+```
+
+**Prioridad por riesgo.** Puntaje = impacto × probabilidad: **P0** si es ≥ 15, **P1** entre 8 y 14, **P2** si es ≤ 7. El validador recalcula la prioridad y solo acepta una distinta con un motivo explícito (`priority_override_reason`).
+
+**Validación automática** (`uv run qa specs validate`, en cada PR):
+
+| Regla | Qué rechaza |
+|---|---|
+| SPEC001 · SPEC002 | Secciones obligatorias faltantes o archivo con nombre distinto del ID |
+| PRI002 · PRI003 | Puntaje o prioridad que no coinciden con la matriz de riesgo |
+| TRC001 · TRC002 | Casos que apuntan a requisitos inexistentes, o requisitos sin casos |
+| IMP001 · IMP002 · IMP003 · IMP004 | Casos automatizables sin test, tests sin caso, markers a casos inexistentes o casos manuales con automatización |
+
+**Cobertura de la especificación** (en vivo en el [dashboard](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/#cobertura)): 100 % de los requisitos especificados y 100 % de los casos automatizables con su test, en P0, P1 y P2. El detalle está en la [matriz de trazabilidad](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/traceability.html).
+
+## Estrategia de ejecución
+
+| Práctica | Cómo se aplica |
+|---|---|
+| **Niveles** | 21 casos unitarios (algoritmo, oráculo, métricas, gate), 2 de integración (plugin de pytest y README reproducible), 23 E2E con Selenium (20 funcionales y 3 de performance) y 5 exploratorios con charter (Ejercicios 2 y 3) |
+| **Oráculo independiente** | El resultado esperado se calcula desde el texto de entrada con las reglas del sitio, relevadas en un [spike de 42 observaciones](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/exploration/wordcounter-spike.html). Los datos P0 están diseñados para que cualquier regla razonable dé el mismo resultado |
+| **Aislamiento** | Navegador y perfil nuevos por test, orden aleatorio, esperas explícitas. La suite unitaria corre sin red ni navegador |
+| **Flaky tests** | Cada intento se registra. Un test que falla y luego pasa es **FLAKY**, nunca PASS. El historial detecta inestabilidad entre corridas |
+| **Disponibilidad del sitio** | Si wordcounter.net no responde antes del test, el caso queda **BLOCKED**: no se confunde con un defecto |
+| **Quality gate** | Política declarativa en [`config/quality-gate.yaml`](config/quality-gate.yaml): un P0 que falla o es flaky bloquea; un defecto conocido documentado advierte. El gate define el estado del job |
+| **Arquitectura** | Núcleo puro (oráculo, algoritmo, métricas, gate) separado de los adaptadores (Selenium, pytest, disco). Tres contratos de `import-linter` lo verifican en CI. Detalle en [Arquitectura](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/architecture/index.html) |
 
 ## Tecnologías
 
@@ -77,7 +126,7 @@ uv sync --group dev            # crea .venv con Python 3.12 y las versiones del 
 
 | Qué | Comando |
 |---|---|
-| Ejercicio 4 con el ejemplo del PDF | `uv run word-frequency data/samples/farmatodo_example.txt` |
+| Ejercicio 4 con el ejemplo del enunciado | `uv run word-frequency data/samples/farmatodo_example.txt` |
 | … con histograma de barras | `uv run word-frequency data/samples/farmatodo_example.txt --histogram` |
 | Tests unitarios (sin red ni navegador) | `uv run pytest tests/unit` |
 | Unit + integración (lo que corre `pytest` a secas) | `uv run pytest` |
@@ -86,6 +135,7 @@ uv sync --group dev            # crea .venv con Python 3.12 y las versiones del 
 | Performance (P2, secuencial, ligera) | `uv run pytest tests/performance -p no:randomly --qa-results-dir reports` |
 | Validar especificaciones y trazabilidad | `uv run qa specs validate` |
 | Regenerar los bloques generados del SDD | `uv run qa specs generate` |
+| Portal en local | `uv sync --group dev --group docs && uv run qa portal build && uv run mkdocs serve` |
 
 Variables útiles: `QA_HEADLESS=false` (ver el navegador), `QA_TIMEOUT=15`, `QA_PERF_SAMPLES=5` (máximo 10), `QA_BASE_URL`, `QA_BROWSER` (`chrome` o `firefox`).
 
@@ -121,57 +171,40 @@ uv run qa report summary --run reports/run-result.json --out-dir reports      # 
 uv run qa gate --run reports/run-result.json                                  # código de salida = decisión del gate
 ```
 
-El **reporte resumen** muestra escenarios ejecutados, aprobados, flaky, fallidos, omitidos y bloqueados, y para cada fallo el caso, la categoría, la descripción del error y la evidencia (captura y DOM en `reports/evidence/`).
+El **reporte resumen** muestra escenarios ejecutados, aprobados, flaky, fallidos, omitidos y bloqueados, y para cada fallo el caso, la categoría, la descripción del error y la evidencia.
 
-Para interpretar los resultados:
+Cómo leer los estados:
 
-- *Aprobados* son PASS limpios, en el primer intento.
-- *FLAKY* falló y luego pasó en la misma corrida: requiere atención y bloquea si es P0.
-- *BLOCKED* indica que el sitio no estaba disponible antes del test: no es un fallo del producto, pero un P0 bloqueado deja el gate inconclusivo.
-- Los casos TC-WC-017…020 reproducen defectos confirmados y fallan a propósito; el gate los muestra como *fallo conocido*.
-
-## Documentación local
-
-```bash
-uv sync --group dev --group docs
-uv run qa portal build          # genera docs/generated desde specs (y --history-dir si hay historial)
-uv run mkdocs serve             # http://127.0.0.1:8000
-```
+- **PASS**: aprobado en el primer intento.
+- **FLAKY**: falló y luego pasó en la misma corrida. Requiere atención y bloquea si es P0.
+- **BLOCKED**: el sitio no estaba disponible antes del test. No es un fallo del producto, pero un P0 bloqueado deja el gate inconclusivo.
+- **FAIL conocido**: TC-WC-017…020 describen el comportamiento correcto ante los defectos del Ejercicio 2 y fallan mientras el defecto exista. Cuando el sitio lo corrija, pasarán solos.
 
 ## CI/CD
 
 | Workflow | Cuándo | Qué hace |
 |---|---|---|
-| `pr-checks` | PR y push a `master` | ruff, formato, mypy, import-linter, `qa specs validate`, unit + integración con cobertura, `mkdocs build --strict`; job `readme-smoke` con estos comandos en un runner limpio |
-| `functional-tests` | push a `master`, manual y diario | unit + integración sin reintentos; E2E headless con reintentos; resultado normalizado, reporte, artifacts, gate; persiste el historial |
-| `performance` | manual y semanal | mediciones P2 secuenciales; persiste el historial |
-| `deploy-pages` | cambios en docs/specs, fin de las corridas anteriores, manual | genera el portal desde specs + `qa-history` y lo publica con las acciones oficiales de Pages |
-| `sync-develop` | push a `master` | avanza `develop` hasta `master` (o hace merge si `develop` divergió; nunca fuerza) |
-| `persist-history` | reutilizable | agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
+| `pr-checks` | PR y push a `master` y `develop` | ruff, formato, mypy, import-linter, `qa specs validate`, unit + integración con cobertura, `mkdocs build --strict`. El job `readme-smoke` corre los comandos de este README en un runner limpio |
+| `functional-tests` | push a `master`, diario y manual | Unit + integración sin reintentos, E2E headless con reintentos, resultado normalizado, reporte resumen (PDF, HTML, Markdown), artifacts y quality gate. Persiste el historial |
+| `performance` | semanal y manual | Mediciones P2 secuenciales. Persiste el historial |
+| `deploy-pages` | cambios en docs o specs, fin de las corridas anteriores, manual | Genera el portal desde specs + `qa-history` y lo publica en GitHub Pages |
+| `sync-develop` | push a `master` | Avanza `develop` hasta `master` (o hace merge si divergió; nunca fuerza) |
+| `persist-history` | reutilizable | Agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
 
-**Ramas:** `master` es la rama principal y está protegida (solo cambios por pull request con los chequeos de `pr-checks` en verde, sin force-push ni borrado). `develop` se mantiene sincronizada con `master` automáticamente. `qa-history` solo la escribe CI.
+**Ramas:** `master` es la rama principal y está protegida: solo acepta cambios por pull request con `pr-checks` en verde, sin force-push ni borrado. `develop` se sincroniza con `master` automáticamente y `qa-history` solo la escribe CI.
 
 Las acciones están fijadas por SHA de commit, con permisos mínimos por job y concurrencia controlada. Los PR nunca publican ni escriben historial.
-
-**Para publicar el portal:** en *Settings → Pages*, elegir *Source: GitHub Actions*.
-
-## Limitaciones
-
-- wordcounter.net y farmatodo.com son sitios de terceros: su disponibilidad, publicidad y cambios no se controlan. Las caídas se registran como BLOCKED y los cambios de DOM, como fallos categorizados.
-- Las reglas de conteo de WordCounter no están documentadas. El oráculo modela 42 observaciones reales (`data/observations/wordcounter-spike.json`) y se prueba contra ellas.
-- Selenium no se comporta igual en todos los sistemas operativos. La referencia es Linux en GitHub Actions, y cada resultado registra las versiones de Python, Selenium y Chrome.
-- La performance se mide desde runners compartidos: es descriptiva, sin SLA inventados.
-- El checkout de Farmatodo requiere cuenta: el análisis UX llega hasta ese paso, sin crear cuentas ni comprar.
 
 ## Estructura
 
 ```text
-specs/        SDD, requisitos, casos TC-*.md, decisiones (ADR)
+specs/        SDD, requisitos, casos TC-*.md y decisiones (ADR): la fuente de verdad
 config/       política del quality gate
 src/          farmatodo_qa: algoritmo, oráculo, Page Objects, plugin de pytest, métricas, gate, historial, portal
 tests/        unit/{product,framework} · integration · e2e · performance · support
-data/         ejemplo del PDF, salida esperada y observaciones del spike
+data/         ejemplo del enunciado, salida esperada y observaciones del spike
 docs/         portal (bugs, ux, estrategia, arquitectura, algoritmo, conclusiones)
+entrega/      respuesta completa en PDF y su fuente HTML
 .github/      workflows y Dependabot
 ```
 
