@@ -66,7 +66,31 @@ uv sync --group dev            # crea .venv con Python 3.12 y las versiones del 
 
 Variables útiles: `QA_HEADLESS=false` (ver el navegador), `QA_TIMEOUT=15`, `QA_PERF_SAMPLES=5` (máximo 10), `QA_BASE_URL`, `QA_BROWSER` (`chrome` o `firefox`).
 
-## Reportes
+## Ejecuciones y reportes: dónde verlos
+
+Cada push a `master`, la corrida diaria y la ejecución manual de `functional-tests` dejan sus resultados en cuatro lugares:
+
+| Dónde | Qué hay | Cuánto dura |
+|---|---|---|
+| [**Portal → Quality Dashboard**](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/) | Estado de la última corrida, quality gate, cobertura y tendencia. Detalle en [Test Execution](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/execution.html), [Flaky Tests](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/flaky.html) y [Performance](https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/generated/performance.html) | Siempre (se regenera tras cada corrida) |
+| [**Actions → functional-tests**](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml) → abrir una corrida | El **reporte resumen** en la propia página de la corrida (*Summary*) | 90 días (logs de GitHub) |
+| Misma corrida → sección *Artifacts* → **`functional-reports`** (zip) | Reporte resumen en **PDF**, HTML y Markdown, evidencias de cada fallo y datos crudos (ver tabla siguiente) | 30 días |
+| Rama [**`qa-history`**](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/tree/qa-history/runs) | Un JSON por corrida: `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json`. Es la fuente de las tendencias del portal | Permanente |
+
+`performance` funciona igual: [su workflow](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/performance.yml) y el artifact **`performance-reports`**.
+
+Contenido del artifact (igual a la carpeta `reports/` cuando se corre en local):
+
+| Archivo | Para qué |
+|---|---|
+| `summary.pdf` | Reporte resumen listo para compartir o imprimir |
+| `summary.html` · `summary.md` | El mismo reporte en HTML y Markdown |
+| `evidence/*.png` · `evidence/*.html` | Captura de pantalla y DOM de cada intento fallido |
+| `run-result.json` | Resultado normalizado (schema v1) con estados, intentos, entorno y decisión del gate |
+| `junit-unit.xml` · `junit-e2e.xml` | JUnit para cualquier herramienta de CI |
+| `attempts.jsonl` · `session-*.json` | Registro crudo de cada intento, tal como lo recolectó el plugin |
+
+En local, después de correr los tests con `--qa-results-dir reports`:
 
 ```bash
 uv run qa results build --results-dir reports --out reports/run-result.json   # normaliza + evalúa el gate

@@ -53,6 +53,13 @@ jobs:
       - name: Reporte resumen
         if: always()
         run: uv run qa report summary --run reports/run-result.json --out-dir reports --github-summary
+      - name: Reporte resumen en PDF
+        if: always()
+        # Chrome ya está en el runner: imprime el HTML del reporte. Si falla, se avisa sin tapar el resultado real.
+        run: |
+          google-chrome --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
+            --print-to-pdf="$PWD/reports/summary.pdf" "file://$PWD/reports/summary.html" \
+            || echo "::warning::no se pudo generar reports/summary.pdf"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
