@@ -1,6 +1,6 @@
 site_name: Farmatodo QA — Quality Portal
 site_description: Prueba técnica de Ingeniero de Calidad QA — SDD, trazabilidad, ejecución, flaky tests y performance
-site_author: Yoel Almirón
+site_author: Yoel Maximiliano Almirón
 # site_url y repo_url se completan en CI (deploy-pages) con el repositorio real.
 site_url: !ENV SITE_URL
 repo_url: !ENV REPO_URL

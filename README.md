@@ -1,6 +1,9 @@
 # Farmatodo QA Engineering & Quality Intelligence Platform
 
-Prueba técnica de **Ingeniero de Calidad QA — Farmatodo**, resuelta con **Specification-Driven Development**: cada requisito y cada caso de prueba se especifican primero, en archivos versionados. Los tests se vinculan a esa especificación, GitHub Actions los ejecuta y un portal publica la trazabilidad, los resultados, los flaky tests y la performance de cada corrida.
+> **Prueba técnica para el puesto de Ingeniero de Calidad QA en Farmatodo**  
+> Autor: **Ing. Yoel Maximiliano Almirón** · [GitHub @yoelalmiron1997](https://github.com/yoelalmiron1997) · octubre de 2026
+
+Resuelta con **Specification-Driven Development**: cada requisito y cada caso de prueba se especifican primero, en archivos versionados. Los tests se vinculan a esa especificación, GitHub Actions los ejecuta y un portal publica la trazabilidad, los resultados, los flaky tests y la performance de cada corrida.
 
 [![pr-checks](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/pr-checks.yml)
 [![functional-tests](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml/badge.svg?branch=master)](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml)
