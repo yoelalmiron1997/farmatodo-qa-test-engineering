@@ -207,7 +207,7 @@ docker run --rm ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering:1.0.0 pyte
 docker run --rm -v "$PWD/reports:/app/reports" ghcr.io/yoelalmiron1997/farmatodo-qa-test-engineering:1.0.0   # reportes en tu carpeta
 ```
 
-Cada release incluye en sus notas los comandos exactos para reproducirlo. Para publicar una versión nueva: actualizar `version` en `pyproject.toml`, agregar `release-notes/vX.Y.Z.md` y la entrada en [`CHANGELOG.md`](CHANGELOG.md), y subir el tag.
+Cada release incluye en sus notas los comandos exactos para reproducirlo. Para publicar una versión nueva: actualizar `version` en `pyproject.toml`, agregar `release-notes/vX.Y.Z.md` y la entrada en [`CHANGELOG.md`](CHANGELOG.md), y ejecutar *Actions → release → Run workflow* sobre `master` (o subir el tag `vX.Y.Z`). El release crea el tag, publica los archivos y la imagen en GitHub Packages.
 
 ## CI/CD
 
@@ -217,7 +217,7 @@ Cada release incluye en sus notas los comandos exactos para reproducirlo. Para p
 | `functional-tests` | push a `master`, diario y manual | Unit + integración sin reintentos, E2E headless con reintentos, resultado normalizado, reporte resumen (PDF, HTML, Markdown), artifacts y quality gate. Persiste el historial |
 | `performance` | semanal y manual | Mediciones P2 secuenciales. Persiste el historial |
 | `deploy-pages` | cambios en docs o specs, fin de las corridas anteriores, manual | Genera el portal desde specs + `qa-history` y lo publica en GitHub Pages |
-| `release` | tag `vX.Y.Z` | Valida todo (estático, unit, integración, E2E) y, si el gate no bloquea, publica el release con los PDF, el paquete, las dependencias exactas, los reportes y `environment.json` |
+| `release` | manual desde `master` o tag `vX.Y.Z` | Valida todo (estático, unit, integración, E2E) y, si el gate no bloquea, publica el release con los PDF, el paquete, las dependencias exactas, los reportes y `environment.json` |
 | `container` | push a `master`, PR que tocan el ambiente y tags | Construye la imagen Docker y la prueba (algoritmo, unit + integración y E2E dentro del contenedor). Con un tag la publica en GitHub Packages |
 | `sync-develop` | push a `master` | Avanza `develop` hasta `master` (o hace merge si divergió; nunca fuerza) |
 | `persist-history` | reutilizable | Agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
