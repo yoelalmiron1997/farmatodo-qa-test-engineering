@@ -9,8 +9,8 @@ __pycache__/
 coverage.xml
 
 # Generados (se reconstruyen en cada corrida/despliegue; no se versionan)
-reports/
-docs/generated/
-site/
-history/
-output.txt
+/reports/
+/docs/generated/
+/site/
+/history/
+/output.txt
