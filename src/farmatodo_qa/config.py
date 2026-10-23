@@ -17,6 +17,9 @@ def _bool(value: str | None, default: bool) -> bool:
 class Settings:
     base_url: str = "https://wordcounter.net/"
     browser: str = "chrome"
+    # Versión exacta del navegador (p. ej. "155.0.8059.39"). Vacío = el instalado en la máquina.
+    # Con un valor, Selenium Manager descarga esa versión (Chrome for Testing) y su driver.
+    browser_version: str | None = None
     headless: bool = True
     timeout_s: float = 10.0
     viewport: str = "1366,768"
@@ -33,6 +36,7 @@ class Settings:
         return cls(
             base_url=env.get("QA_BASE_URL", d.base_url),
             browser=env.get("QA_BROWSER", d.browser),
+            browser_version=(env.get("QA_BROWSER_VERSION") or "").strip() or d.browser_version,
             headless=_bool(env.get("QA_HEADLESS"), d.headless),
             timeout_s=float(env.get("QA_TIMEOUT", d.timeout_s)),
             viewport=env.get("QA_VIEWPORT", d.viewport),

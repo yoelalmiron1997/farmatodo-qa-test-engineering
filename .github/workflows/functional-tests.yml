@@ -14,6 +14,10 @@ on:
         description: Reintentos por test E2E (0 los desactiva)
         default: "2"
         required: false
+      browser_version:
+        description: Versión exacta de Chrome (vacío = la del runner). Sirve para reproducir una versión anterior
+        default: ""
+        required: false
   schedule:
     - cron: "17 9 * * *" # regresión diaria de baja frecuencia
 
@@ -26,6 +30,7 @@ concurrency:
 env:
   QA_HEADLESS: "true"
   QA_RERUNS: ${{ inputs.reruns || '2' }}
+  QA_BROWSER_VERSION: ${{ inputs.browser_version || '' }}
 
 jobs:
   test:

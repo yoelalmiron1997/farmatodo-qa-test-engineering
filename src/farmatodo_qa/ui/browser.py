@@ -17,13 +17,16 @@ class BrowserConfig:
     viewport: str
     profile_dir: Path  # perfil temporal nuevo por test: sin localStorage previo (autosave del sitio)
     language: str = "en-US"
+    version: str | None = None  # None = navegador instalado; valor = versión exacta vía Selenium Manager
 
 
 BrowserBuilder = Callable[[BrowserConfig], WebDriver]
 
 
-def _chrome(config: BrowserConfig) -> WebDriver:
+def chrome_options(config: BrowserConfig) -> webdriver.ChromeOptions:
     options = webdriver.ChromeOptions()
+    if config.version:
+        options.browser_version = config.version
     if config.headless:
         options.add_argument("--headless=new")
     options.add_argument(f"--window-size={config.viewport}")
@@ -34,11 +37,17 @@ def _chrome(config: BrowserConfig) -> WebDriver:
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
     options.set_capability("goog:loggingPrefs", {"browser": "SEVERE"})
-    return webdriver.Chrome(options=options)  # Selenium Manager resuelve el driver compatible
+    return options
+
+
+def _chrome(config: BrowserConfig) -> WebDriver:
+    return webdriver.Chrome(options=chrome_options(config))  # Selenium Manager resuelve el driver compatible
 
 
 def _firefox(config: BrowserConfig) -> WebDriver:
     options = webdriver.FirefoxOptions()
+    if config.version:
+        options.browser_version = config.version
     if config.headless:
         options.add_argument("-headless")
     options.add_argument("-profile")

@@ -27,6 +27,15 @@ def test_performance_samples_are_capped(requested: str, effective: int) -> None:
 
 
 @pytest.mark.case("TC-FW-005")
+@pytest.mark.parametrize(
+    ("value", "expected"), [(None, None), ("", None), ("  ", None), ("155.0.8059.39", "155.0.8059.39")]
+)
+def test_browser_version_pin(value: str | None, expected: str | None) -> None:
+    env = {} if value is None else {"QA_BROWSER_VERSION": value}
+    assert Settings.from_env(env).browser_version == expected
+
+
+@pytest.mark.case("TC-FW-005")
 def test_settings_are_immutable() -> None:
     with pytest.raises(dataclasses.FrozenInstanceError):
         Settings().timeout_s = 1  # type: ignore[misc]

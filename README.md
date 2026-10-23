@@ -15,6 +15,7 @@ Resuelta con **Specification-Driven Development**: cada requisito y cada caso de
 | 📊 **Portal de calidad** | https://yoelalmiron1997.github.io/farmatodo-qa-test-engineering/ |
 | 📄 **Respuesta completa en PDF** | [`entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf`](entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf): los 4 ejercicios, punto por punto |
 | ▶️ **Ejecuciones** | [GitHub Actions → functional-tests](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/workflows/functional-tests.yml) |
+| 🏷️ **Versión entregada** | [Release v1.0.0](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/releases/tag/v1.0.0): código, PDF, reportes y ambiente congelado · [CHANGELOG](CHANGELOG.md) |
 | 📐 **Especificación (SDD)** | [`specs/SDD.md`](specs/SDD.md) · [requisitos](specs/requirements/requirements.yaml) · [casos](specs/cases/) · [decisiones (ADR)](specs/decisions/) |
 
 ## Los cuatro ejercicios
@@ -95,7 +96,7 @@ Las versiones son las del lockfile (`uv.lock`): local y CI usan exactamente las 
 
 | Área | Tecnología | Versión | Para qué se usa |
 |---|---|---|---|
-| Lenguaje y entorno | [Python](https://www.python.org/) | 3.12 | Todo el framework y el algoritmo del ejercicio 4 |
+| Lenguaje y entorno | [Python](https://www.python.org/) | 3.12.3 | Todo el framework y el algoritmo del ejercicio 4 |
 | | [uv](https://docs.astral.sh/uv/) | — | Instala Python y dependencias desde el lockfile: un solo comando, el mismo resultado en cualquier máquina |
 | Automatización UI | [Selenium WebDriver](https://www.selenium.dev/) | 4.51 | Pruebas E2E sobre wordcounter.net con Page Object Model. Selenium Manager descarga el driver compatible con el Chrome instalado |
 | Ejecución de pruebas | [Pytest](https://docs.pytest.org/) | 8.4 | Runner de unit, integración, E2E y performance. Un plugin propio registra cada intento, los estados y las evidencias |
@@ -111,7 +112,7 @@ Las versiones son las del lockfile (`uv.lock`): local y CI usan exactamente las 
 | Portal y reportes | [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) | 9.7 | Portal de calidad generado desde las specs y el historial |
 | | [Mermaid](https://mermaid.js.org/) · [Chart.js](https://www.chartjs.org/) | — · 4.4 | Diagramas de arquitectura y gráficos de tendencia en el portal |
 | | Chrome headless | — | Imprime el reporte resumen a PDF en CI |
-| CI/CD | [GitHub Actions](https://docs.github.com/actions) | — | Seis workflows con acciones fijadas por SHA y permisos mínimos |
+| CI/CD | [GitHub Actions](https://docs.github.com/actions) | — | Siete workflows con acciones fijadas por SHA y permisos mínimos |
 | | [GitHub Pages](https://pages.github.com/) | — | Publica el portal |
 | | [Dependabot](https://docs.github.com/code-security/dependabot) | — | Propone actualizaciones de dependencias y acciones |
 
@@ -122,7 +123,7 @@ Requisitos: [uv](https://docs.astral.sh/uv/getting-started/installation/) y, par
 ```bash
 git clone https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering.git
 cd farmatodo-qa-test-engineering
-uv sync --group dev            # crea .venv con Python 3.12 y las versiones del lockfile
+uv sync --group dev            # crea .venv con Python 3.12.3 y las versiones exactas del lockfile
 ```
 
 ## Ejecutar
@@ -140,7 +141,7 @@ uv sync --group dev            # crea .venv con Python 3.12 y las versiones del 
 | Regenerar los bloques generados del SDD | `uv run qa specs generate` |
 | Portal en local | `uv sync --group dev --group docs && uv run qa portal build && uv run mkdocs serve` |
 
-Variables útiles: `QA_HEADLESS=false` (ver el navegador), `QA_TIMEOUT=15`, `QA_PERF_SAMPLES=5` (máximo 10), `QA_BASE_URL`, `QA_BROWSER` (`chrome` o `firefox`).
+Variables útiles: `QA_HEADLESS=false` (ver el navegador), `QA_TIMEOUT=15`, `QA_PERF_SAMPLES=5` (máximo 10), `QA_BASE_URL`, `QA_BROWSER` (`chrome` o `firefox`), `QA_BROWSER_VERSION` (versión exacta del navegador; vacío = el instalado).
 
 ## Ejecuciones y reportes: dónde verlos
 
@@ -183,6 +184,21 @@ Cómo leer los estados:
 - **BLOCKED**: el sitio no estaba disponible antes del test. No es un fallo del producto, pero un P0 bloqueado deja el gate inconclusivo.
 - **FAIL conocido**: TC-WC-017…020 describen el comportamiento correcto ante los defectos del Ejercicio 2 y fallan mientras el defecto exista. Cuando el sitio lo corrija, pasarán solos.
 
+## Versiones y reproducibilidad
+
+Cada versión entregada se congela como un [release de GitHub](https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/releases) para poder reproducirla exactamente en otro momento:
+
+| Qué se congela | Cómo |
+|---|---|
+| Código, especificaciones y documentación | Tag `vX.Y.Z` (la versión de `pyproject.toml` debe coincidir) |
+| Python | Versión exacta en `.python-version` (3.12.3) |
+| Dependencias | `uv.lock` con hashes; en el release también como `requirements.lock.txt` |
+| Navegador y driver | Versión registrada en cada resultado; se reproduce con `QA_BROWSER_VERSION=<versión>`, que hace que Selenium Manager descargue esa versión exacta de Chrome for Testing |
+| Runner y herramientas | Imagen fija (`ubuntu-24.04`), uv fijado y acciones fijadas por SHA, todo registrado en `environment.json` |
+| Evidencia | PDF de la respuesta, reporte de la corrida de validación y reportes completos adjuntos al release |
+
+Cada release incluye en sus notas los comandos exactos para reproducirlo. Para publicar una versión nueva: actualizar `version` en `pyproject.toml`, agregar `release-notes/vX.Y.Z.md` y la entrada en [`CHANGELOG.md`](CHANGELOG.md), y subir el tag.
+
 ## CI/CD
 
 | Workflow | Cuándo | Qué hace |
@@ -191,6 +207,7 @@ Cómo leer los estados:
 | `functional-tests` | push a `master`, diario y manual | Unit + integración sin reintentos, E2E headless con reintentos, resultado normalizado, reporte resumen (PDF, HTML, Markdown), artifacts y quality gate. Persiste el historial |
 | `performance` | semanal y manual | Mediciones P2 secuenciales. Persiste el historial |
 | `deploy-pages` | cambios en docs o specs, fin de las corridas anteriores, manual | Genera el portal desde specs + `qa-history` y lo publica en GitHub Pages |
+| `release` | tag `vX.Y.Z` | Valida todo (estático, unit, integración, E2E) y, si el gate no bloquea, publica el release con los PDF, el paquete, las dependencias exactas, los reportes y `environment.json` |
 | `sync-develop` | push a `master` | Avanza `develop` hasta `master` (o hace merge si divergió; nunca fuerza) |
 | `persist-history` | reutilizable | Agrega `runs/<workflow>/<AAAA>/<MM>/<run_id>-<intento>.json` a la rama `qa-history` sin sobrescribir |
 
@@ -208,6 +225,8 @@ tests/        unit/{product,framework} · integration · e2e · performance · s
 data/         ejemplo del enunciado, salida esperada y observaciones del spike
 docs/         portal (bugs, ux, estrategia, arquitectura, algoritmo, conclusiones)
 entrega/      respuesta completa en PDF y su fuente HTML
+release-notes/ notas de cada versión publicada
+scripts/      congelamiento del ambiente para los releases
 .github/      workflows y Dependabot
 ```
 

@@ -61,6 +61,7 @@ def driver(
         headless=qa_settings.headless,
         viewport=qa_settings.viewport,
         profile_dir=tmp_path / "browser-profile",
+        version=qa_settings.browser_version,
     )
     web_driver = BrowserFactory().create(config)
     try:

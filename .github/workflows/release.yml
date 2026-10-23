@@ -1,0 +1,92 @@
+# Workflow de release — Congela una versión entregable y la publica como release de GitHub.
+# Se dispara al subir un tag vX.Y.Z. Valida todo (estático, unit, integración, E2E), y solo si el quality gate
+# no bloquea publica: los PDF, el paquete, las dependencias exactas, los reportes y el ambiente congelado
+# (environment.json). Corre en una imagen de runner fija y con uv fijado para que el ambiente quede registrado.
+name: release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  QA_HEADLESS: "true"
+  QA_RERUNS: "2"
+  TAG: ${{ github.ref_name }}
+
+jobs:
+  release:
+    name: Validar, congelar y publicar
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          version: "0.11.32"
+          enable-cache: false
+      - name: El tag coincide con la versión del proyecto
+        run: |
+          version=$(python3 -c 'import tomllib;print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')
+          [ "${TAG#v}" = "$version" ] || { echo "::error::tag $TAG ≠ versión $version de pyproject.toml"; exit 1; }
+          [ -f "release-notes/$TAG.md" ] || { echo "::error::faltan release-notes/$TAG.md"; exit 1; }
+      - name: Instalar dependencias exactas (lockfile)
+        run: uv sync --frozen --group dev
+      - name: Chrome del runner
+        run: google-chrome --version
+
+      - name: Chequeos estáticos y especificación
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run mypy
+          uv run lint-imports
+          uv run qa specs validate
+      - name: Unit + integración
+        run: uv run pytest tests/unit tests/integration --qa-results-dir reports --junitxml reports/junit-unit.xml
+      - name: E2E wordcounter.net
+        id: e2e
+        run: |
+          set +e
+          uv run pytest tests/e2e --reruns "$QA_RERUNS" --qa-results-dir reports --junitxml reports/junit-e2e.xml
+          code=$?
+          if [ "$code" != "0" ] && [ "$code" != "1" ]; then echo "pytest terminó con código $code"; exit 1; fi
+      - name: Resultado normalizado y reporte resumen
+        run: |
+          uv run qa results build --results-dir reports --workflow release --scope functional --out reports/run-result.json
+          uv run qa report summary --run reports/run-result.json --out-dir reports --github-summary
+          google-chrome --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
+            --print-to-pdf="$PWD/reports/summary.pdf" "file://$PWD/reports/summary.html"
+      - name: Quality gate (bloquea el release si corresponde)
+        run: uv run qa gate --run reports/run-result.json
+
+      - name: Paquete, dependencias exactas y archivos del release
+        run: |
+          uv build --out-dir dist
+          uv export --frozen --all-groups --format requirements-txt --output-file dist/requirements.lock.txt
+          cp entrega/Respuesta-Prueba-Tecnica-QA-Farmatodo-Yoel-Almiron.pdf dist/
+          cp reports/summary.pdf "dist/reporte-ejecucion-$TAG.pdf"
+          (cd reports && zip -qr "../dist/functional-reports-$TAG.zip" .)
+      - name: Congelar el ambiente (environment.json + notas)
+        run: |
+          export UV_VERSION_USED="$(uv --version)"
+          uv run python scripts/release_manifest.py --tag "$TAG" --run reports/run-result.json \
+            --out-dir dist --notes-out release-notes.md
+      - name: Publicar el release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" dist/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "$TAG — Entrega de la prueba técnica de Ingeniero de Calidad QA" \
+            --notes-file release-notes.md
