@@ -1,0 +1,4752 @@
+{
+ "schema_version": 1,
+ "run": {
+  "run_id": "40199019419",
+  "run_attempt": 1,
+  "workflow": "functional-tests",
+  "scope": "functional",
+  "trigger": "schedule",
+  "commit_sha": "8bb0747a924aae04e4a1c25b3f83cfad38af55bd",
+  "ref": "refs/heads/master",
+  "repository": "yoelalmiron1997/farmatodo-qa-test-engineering",
+  "run_url": "https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/40199019419",
+  "started_at": "2026-10-25T13:44:56.119773Z",
+  "finished_at": "2026-10-25T13:46:44.695043Z",
+  "random_seed": 1491595818,
+  "reruns_configured": 2
+ },
+ "environment": {
+  "kind": "github-actions",
+  "os": "ubuntu24",
+  "python": "3.12.3",
+  "pytest": "9.1.1",
+  "selenium": "4.51.0",
+  "browser": {
+   "name": "chrome",
+   "version": "155.0.8059.39",
+   "driver_version": "155.0.8059.39",
+   "headless": true,
+   "viewport": "1366x768"
+  },
+  "target_urls": [
+   "https://wordcounter.net/"
+  ]
+ },
+ "cases": [
+  {
+   "case_id": "TC-ALG-001",
+   "title": "Salida exacta del ejemplo del PDF",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:ab7f5a38bad3736c",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_pdf_example_output_matches_golden_byte_for_byte",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0015,
+       "started_at": "2026-10-25T13:44:57.842289Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-002",
+   "title": "Conteo de palabras",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:ee9f1b81af435b84",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_word_count[dos-lineas]",
+     "param_id": "dos-lineas",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.868314Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_word_count[separadores-multiples]",
+     "param_id": "separadores-multiples",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.841263Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_word_count[solo-saltos]",
+     "param_id": "solo-saltos",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.855812Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_word_count[vacio]",
+     "param_id": "vacio",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.844774Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-003",
+   "title": "Conteo de caracteres sin saltos de línea",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:44e4956c1d572442",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_character_count_excludes_line_breaks[crlf]",
+     "param_id": "crlf",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.848770Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_character_count_excludes_line_breaks[espacio]",
+     "param_id": "espacio",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.982270Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_character_count_excludes_line_breaks[lf]",
+     "param_id": "lf",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.853928Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_character_count_excludes_line_breaks[salto-final]",
+     "param_id": "salto-final",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.858673Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_character_count_excludes_line_breaks[tab]",
+     "param_id": "tab",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.845798Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-004",
+   "title": "Orden por frecuencia y desempate alfabético",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:146af76db697a939",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_sorted_by_frequency_then_alphabetically[descendente]",
+     "param_id": "descendente",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.865391Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_sorted_by_frequency_then_alphabetically[empate-alfabetico]",
+     "param_id": "empate-alfabetico",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.864381Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-005",
+   "title": "Archivo vacío",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:39c0f2463e90e169",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_empty_file[solo-saltos]",
+     "param_id": "solo-saltos",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:57.866846Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_empty_file[vacio]",
+     "param_id": "vacio",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0006,
+       "started_at": "2026-10-25T13:44:57.847275Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-006",
+   "title": "Errores de lectura",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:da4733488805705d",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_invalid_utf8_reports_error",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0006,
+       "started_at": "2026-10-25T13:44:57.861092Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_missing_file_reports_error",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:57.850151Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_utf8_bom_is_not_counted",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0006,
+       "started_at": "2026-10-25T13:44:57.857152Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-007",
+   "title": "Puntuación y mayúsculas",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:913831e93928cec0",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_punctuation_and_case_are_normalized",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.862429Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-008",
+   "title": "Unicode: acentos, ñ y normalización",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:9600696a0bb4449a",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_nfc_and_nfd_forms_are_unified",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0007,
+       "started_at": "2026-10-25T13:44:57.837795Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_unicode_words_are_not_split",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.854822Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-009",
+   "title": "Histograma",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:8162f37c1ffb7323",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_histogram_flag_appends_bars",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:57.851541Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_histogram_is_proportional_and_keeps_order",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.859564Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_report_uses_singular_for_one",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.839293Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-010",
+   "title": "Escalamiento lineal (informativo)",
+   "priority": "P2",
+   "level": "unit",
+   "spec_hash": "sha256:c51012725df4dca7",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_scaling_is_roughly_linear",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.8534,
+       "started_at": "2026-10-25T13:44:56.983286Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-ALG-011",
+   "title": "Separadores de espacio en blanco",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:2982e0a950cb0db3",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_whitespace_variants_separate_words[espacios]",
+     "param_id": "espacios",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.863383Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_whitespace_variants_separate_words[nbsp]",
+     "param_id": "nbsp",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.852912Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_word_frequency.py::test_whitespace_variants_separate_words[tab]",
+     "param_id": "tab",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:57.840265Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-DEL-001",
+   "title": "Reproducibilidad desde el README",
+   "priority": "P1",
+   "level": "integration",
+   "spec_hash": "sha256:a2b63f662e9c8862",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_documented_algorithm_command_prints_pdf_example",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0447,
+       "started_at": "2026-10-25T13:44:58.074570Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv run mkdocs serve]",
+     "param_id": "uv run mkdocs serve",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.071870Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv run pytest tests/e2e]",
+     "param_id": "uv run pytest tests/e2e",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.070071Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv run pytest tests/unit]",
+     "param_id": "uv run pytest tests/unit",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.070961Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv run qa specs validate]",
+     "param_id": "uv run qa specs validate",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.072742Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv run word-frequency data/samples/farmatodo_example.txt]",
+     "param_id": "uv run word-frequency data/samples/farmatodo_example.txt",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.073648Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_readme_smoke.py::test_readme_documents_command[uv sync --group dev]",
+     "param_id": "uv sync --group dev",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.069104Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-001",
+   "title": "Clasificación de intentos y flaky observado",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:51bffe2893802420",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[blocked]",
+     "param_id": "blocked",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.942240Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[fail-fail-pass]",
+     "param_id": "fail-fail-pass",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.935204Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[fail-pass]",
+     "param_id": "fail-pass",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.938362Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[fail-sin-reintento]",
+     "param_id": "fail-sin-reintento",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.927939Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[fail-x3]",
+     "param_id": "fail-x3",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.943187Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[pass]",
+     "param_id": "pass",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.933263Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[sin-intentos]",
+     "param_id": "sin-intentos",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.930103Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_attempt_sequence_classification[skip]",
+     "param_id": "skip",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.937356Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_case_status_is_worst_execution[statuses0-FAIL]",
+     "param_id": "statuses0-FAIL",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.951154Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_case_status_is_worst_execution[statuses1-FLAKY]",
+     "param_id": "statuses1-FLAKY",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.934228Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_case_status_is_worst_execution[statuses2-BLOCKED]",
+     "param_id": "statuses2-BLOCKED",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.945206Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_case_status_is_worst_execution[statuses3-PASS]",
+     "param_id": "statuses3-PASS",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.952199Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_case_status_is_worst_execution[statuses4-NOT_RUN]",
+     "param_id": "statuses4-NOT_RUN",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.950188Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_categories_are_extensible_without_code_changes",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.949148Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[AssertionError-esperado 9, actual 8-assertion]",
+     "param_id": "AssertionError-esperado 9, actual 8-assertion",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.936233Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[BlockedPrecondition-None-external_dependency]",
+     "param_id": "BlockedPrecondition-None-external_dependency",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.946229Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[NoSuchElementException--element_not_found]",
+     "param_id": "NoSuchElementException--element_not_found",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.948278Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[None-None-unknown]",
+     "param_id": "None-None-unknown",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.931175Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[SessionNotCreatedException--browser_driver]",
+     "param_id": "SessionNotCreatedException--browser_driver",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.928997Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[StaleElementReferenceException--stale_element]",
+     "param_id": "StaleElementReferenceException--stale_element",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.932263Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[ValueError-otra cosa-unknown]",
+     "param_id": "ValueError-otra cosa-unknown",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.941295Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[WebDriverException-chrome not reachable-browser_driver]",
+     "param_id": "WebDriverException-chrome not reachable-browser_driver",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.944212Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[WebDriverException-unknown error: net::ERR_NAME_NOT_RESOLVED-network]",
+     "param_id": "WebDriverException-unknown error: net::ERR_NAME_NOT_RESOLVED-network",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.947232Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_failure_categories[selenium.common.exceptions.TimeoutException--timeout]",
+     "param_id": "selenium.common.exceptions.TimeoutException--timeout",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.939367Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_flaky_classification.py::test_flaky_is_never_reported_as_clean_pass",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.940294Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-002",
+   "title": "Agregación de indicadores y denominadores",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:52b492870b9879aa",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_summary_metrics.py::test_parametrized_case_counts_once_with_worst_status",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:56.954721Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_summary_metrics.py::test_rates_are_none_without_executions",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.955732Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_summary_metrics.py::test_summary_counts_cases_and_attempts_separately",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:56.953465Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-003",
+   "title": "Repositorio de historial",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:cdd373536d315571",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_empty_history_returns_empty_list[filesystem]",
+     "param_id": "filesystem",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.975545Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_empty_history_returns_empty_list[memoria]",
+     "param_id": "memoria",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.980852Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_filesystem_layout_is_partitioned_by_workflow_and_month",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0008,
+       "started_at": "2026-10-25T13:44:56.968935Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_runs_are_returned_in_chronological_order[filesystem]",
+     "param_id": "filesystem",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0018,
+       "started_at": "2026-10-25T13:44:56.972518Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_runs_are_returned_in_chronological_order[memoria]",
+     "param_id": "memoria",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:56.970906Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_same_run_is_never_overwritten[filesystem]",
+     "param_id": "filesystem",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0012,
+       "started_at": "2026-10-25T13:44:56.978458Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_history_repository.py::test_same_run_is_never_overwritten[memoria]",
+     "param_id": "memoria",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:56.976935Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-004",
+   "title": "Validador de especificaciones y trazabilidad",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:ee545de5bc690278",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[automatizado-sin-test]",
+     "param_id": "automatizado-sin-test",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.059588Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[enlace-invalido]",
+     "param_id": "enlace-invalido",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.893683Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[id-duplicado]",
+     "param_id": "id-duplicado",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.063611Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[marker-huerfano]",
+     "param_id": "marker-huerfano",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.064696Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[nombre-archivo]",
+     "param_id": "nombre-archivo",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.066846Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[override-justificado]",
+     "param_id": "override-justificado",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.895975Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[prioridad-sin-override]",
+     "param_id": "prioridad-sin-override",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:58.057451Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[requisito-inexistente]",
+     "param_id": "requisito-inexistente",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.894848Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[secciones]",
+     "param_id": "secciones",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.061572Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_each_inconsistency_is_detected[test-sin-marker]",
+     "param_id": "test-sin-marker",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.897052Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_front_matter_must_exist",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:58.067800Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_generated_block_replacement_is_idempotent",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.060566Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_marker_scanner_finds_decorators_params_and_unmarked_tests",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:58.065647Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_missing_required_field_is_rejected",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.898009Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_real_repository_specs_are_consistent",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.1572,
+       "started_at": "2026-10-25T13:44:57.899097Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_unknown_priority_is_rejected_by_schema",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.062527Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_spec_validator.py::test_valid_specs_have_no_issues",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.058517Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-005",
+   "title": "Estadística de performance y baseline",
+   "priority": "P2",
+   "level": "unit",
+   "spec_hash": "sha256:c75f1aa9a6f88a4a",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_browser_options.py::test_exact_version_is_requested_to_selenium_manager",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.892274Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_browser_options.py::test_installed_browser_by_default",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0035,
+       "started_at": "2026-10-25T13:44:57.887881Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[absoluto-bajo]",
+     "param_id": "absoluto-bajo",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.743741Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[alerta-60]",
+     "param_id": "alerta-60",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.745828Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[alerta-70]",
+     "param_id": "alerta-70",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.744784Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[relativo-40]",
+     "param_id": "relativo-40",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.748927Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[relativo-bajo]",
+     "param_id": "relativo-bajo",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.747929Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[sin-baseline]",
+     "param_id": "sin-baseline",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.740440Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_alert_requires_both_relative_and_absolute_change[sin-medicion]",
+     "param_id": "sin-medicion",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.753095Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_baseline_needs_five_runs",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.749796Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_descriptive_statistics",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.750659Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_no_samples",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.742681Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_p95_requires_twenty_samples[19-False]",
+     "param_id": "19-False",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.752006Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_p95_requires_twenty_samples[20-True]",
+     "param_id": "20-True",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.746795Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_performance_stats.py::test_single_sample_has_no_stdev",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.741705Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_browser_version_pin[  -None]",
+     "param_id": "  -None",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.757432Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_browser_version_pin[-None]",
+     "param_id": "-None",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.763016Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_browser_version_pin[155.0.8059.39-155.0.8059.39]",
+     "param_id": "155.0.8059.39-155.0.8059.39",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.754562Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_browser_version_pin[None-None]",
+     "param_id": "None-None",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.762085Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_defaults_without_environment",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.760185Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_performance_samples_are_capped[0-1]",
+     "param_id": "0-1",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.759328Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_performance_samples_are_capped[10-10]",
+     "param_id": "10-10",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.756434Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_performance_samples_are_capped[3-3]",
+     "param_id": "3-3",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.758368Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_performance_samples_are_capped[500-10]",
+     "param_id": "500-10",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.761123Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_settings.py::test_settings_are_immutable",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.755456Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-006",
+   "title": "Validación del esquema de resultados",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:78f1324095644e2f",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_blocked_records_keep_reason_and_category",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.962182Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_invalid_fields_report_their_location[path0-sin-formato]",
+     "param_id": "path0-sin-formato",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.965806Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_invalid_fields_report_their_location[path1-ayer]",
+     "param_id": "path1-ayer",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.964401Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_invalid_fields_report_their_location[path2-P7]",
+     "param_id": "path2-P7",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.960996Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_levels_limit_which_cases_count_as_not_run",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.957965Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_normalizer_classifies_attempts_and_marks_not_run",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.958931Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_results_without_case_id_are_reported_not_silently_dropped",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.959921Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_secrets_are_redacted",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.957084Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_unknown_schema_version_is_rejected",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.966931Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_result_schema.py::test_valid_result_round_trips_through_json",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.963117Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-007",
+   "title": "Datos del dashboard sin y con historial",
+   "priority": "P2",
+   "level": "unit",
+   "spec_hash": "sha256:defeaab82de820ea",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_consistent_failure_is_not_flaky",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:58.122224Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_empty_history_is_no_data_not_zeros",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:58.264301Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_performance_series_compare_against_baseline_after_five_runs",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0006,
+       "started_at": "2026-10-25T13:44:58.124677Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_portal_builds_with_and_without_history",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.135,
+       "started_at": "2026-10-25T13:44:58.126620Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_runs_with_different_spec_are_not_comparable",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:58.262805Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_suspected_flaky_requires_alternation_in_comparable_runs",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0007,
+       "started_at": "2026-10-25T13:44:58.120715Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_dashboard_model.py::test_trend_and_case_history",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0005,
+       "started_at": "2026-10-25T13:44:58.123442Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-008",
+   "title": "Evaluación del quality gate",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:52fd7d853c4e3e04",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_alternative_policy_can_downgrade_p0_flaky_to_warning",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:57.886169Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p0-blocked]",
+     "param_id": "p0-blocked",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.876944Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p0-fail]",
+     "param_id": "p0-fail",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:57.878104Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p0-flaky]",
+     "param_id": "p0-flaky",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.879439Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p0-not-run]",
+     "param_id": "p0-not-run",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:57.874606Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p1-fail]",
+     "param_id": "p1-fail",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.873382Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p1-flaky]",
+     "param_id": "p1-flaky",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.875754Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p2-fail]",
+     "param_id": "p2-fail",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.872198Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[p2-flaky]",
+     "param_id": "p2-flaky",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.883632Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_default_policy[todo-pass]",
+     "param_id": "todo-pass",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.870947Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_known_defect_failure_is_visible_warning",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.884705Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_quarantine_downgrades_but_keeps_failure_visible",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:57.869647Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_quality_gate.py::test_versioned_policy_file_matches_documented_defaults",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0021,
+       "started_at": "2026-10-25T13:44:57.880523Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-009",
+   "title": "Oráculo de WordCounter reproduce las observaciones del spike",
+   "priority": "P1",
+   "level": "unit",
+   "spec_hash": "sha256:792da2ba174f7454",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_defective_observations_differ_from_correct_behaviour",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.904180Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation[\"don\\u2019t don't\"]",
+     "param_id": "\"don\\u2019t don't\"",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.911040Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation[\"e-commerce 2026 don't 3.5 x-ray\"]",
+     "param_id": "\"e-commerce 2026 don't 3.5 x-ray\"",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.883699Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['  hola   mundo  ']",
+     "param_id": "'  hola   mundo  '",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.907963Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['']",
+     "param_id": "''",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.885964Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['---']",
+     "param_id": "'---'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.924390Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['1,000 2.000']",
+     "param_id": "'1,000 2.000'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.917669Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['Caf\\xe9 caf\\xe9 CAF\\xc9']",
+     "param_id": "'Caf\\xe9 caf\\xe9 CAF\\xc9'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.926312Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['Hola, mundo. Hola; mundo! (hola)']",
+     "param_id": "'Hola, mundo. Hola; mundo! (hola)'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.906071Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['I am a an it is']",
+     "param_id": "'I am a an it is'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.887903Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['Salud salud SALUD bienestar Bienestar v]",
+     "param_id": "'Salud salud SALUD bienestar Bienestar v",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.913835Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['a b c']",
+     "param_id": "'a b c'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.923381Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['a\\\\u200bb']",
+     "param_id": "'a\\\\u200bb'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.912900Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['b c d']",
+     "param_id": "'b c d'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.925363Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['beta beta alfa alfa gamma gamma delta']",
+     "param_id": "'beta beta alfa alfa gamma gamma delta'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0055,
+       "started_at": "2026-10-25T13:44:56.876225Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['cafe\\u0301 caf\\xe9']",
+     "param_id": "'cafe\\u0301 caf\\xe9'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.900454Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['el la de que y en']",
+     "param_id": "'el la de que y en'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.915752Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['farmatodo cuida tu salud todos los dias]",
+     "param_id": "'farmatodo cuida tu salud todos los dias",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.918585Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['farmatodo farmatodo farmatodo farmatodo]",
+     "param_id": "'farmatodo farmatodo farmatodo farmatodo",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.891775Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola  mundo']",
+     "param_id": "'hola  mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.898606Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola - mundo']",
+     "param_id": "'hola - mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.910073Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola \\U0001f44b mundo \\U0001f30e']",
+     "param_id": "'hola \\U0001f44b mundo \\U0001f30e'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.888860Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola,mundo']",
+     "param_id": "'hola,mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.921555Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola.mundo']",
+     "param_id": "'hola.mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.911973Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola/mundo']",
+     "param_id": "'hola/mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.895704Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola\\\\n\\\\nmundo']",
+     "param_id": "'hola\\\\n\\\\nmundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.892790Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola\\\\r\\\\nmundo']",
+     "param_id": "'hola\\\\r\\\\nmundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.922475Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['hola\\u2014mundo']",
+     "param_id": "'hola\\u2014mundo'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.886923Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['linea uno\\\\nlinea dos\\\\nlinea tres']",
+     "param_id": "'linea uno\\\\nlinea dos\\\\nlinea tres'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.890795Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['mundo mundo hola hola']",
+     "param_id": "'mundo mundo hola hola'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.909073Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['naranja naranja naranja naranja naranja]",
+     "param_id": "'naranja naranja naranja naranja naranja",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.919542Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['ni\\xf1o ni\\xf1o cami\\xf3n cami\\xf3n cami\\xf3n acci\\xf3n']",
+     "param_id": "'ni\\xf1o ni\\xf1o cami\\xf3n cami\\xf3n cami\\xf3n acci\\xf3n'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.916718Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['pera naranja limon naranja pera naranja]",
+     "param_id": "'pera naranja limon naranja pera naranja",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.884715Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['salud']",
+     "param_id": "'salud'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.899552Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['should would could']",
+     "param_id": "'should would could'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.894748Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['test test. test! TEST?']",
+     "param_id": "'test test. test! TEST?'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.914818Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['the quick brown fox jumps over the lazy]",
+     "param_id": "'the quick brown fox jumps over the lazy",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.897601Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['the the the and and data data data data]",
+     "param_id": "'the the the and and data data data data",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.903252Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['uno\\\\tdos']",
+     "param_id": "'uno\\\\tdos'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.889847Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['uno\\\\u2003dos']",
+     "param_id": "'uno\\\\u2003dos'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0003,
+       "started_at": "2026-10-25T13:44:56.920503Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['uno\\\\xa0dos']",
+     "param_id": "'uno\\\\xa0dos'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0001,
+       "started_at": "2026-10-25T13:44:56.896664Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['xx yy zz']",
+     "param_id": "'xx yy zz'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.882649Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_oracle_matches_spike_observation['zorro \\xe1rbol \\xe1rbol zorro']",
+     "param_id": "'zorro \\xe1rbol \\xe1rbol zorro'",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.893759Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_profile_is_immutable",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.905113Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/product/test_wordcounter_oracle.py::test_top_keywords_uses_first_appearance_for_ties",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0002,
+       "started_at": "2026-10-25T13:44:56.906988Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-FW-010",
+   "title": "Plugin de recolección registra cada intento",
+   "priority": "P1",
+   "level": "integration",
+   "spec_hash": "sha256:2773bef9e2866d41",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/integration/test_collector_plugin.py::test_plugin_records_every_attempt_with_reruns",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0656,
+       "started_at": "2026-10-25T13:44:56.772057Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/integration/test_collector_plugin.py::test_reruns_can_be_disabled",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.035,
+       "started_at": "2026-10-25T13:44:56.839716Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-RPT-001",
+   "title": "Reporte resumen de ejecución",
+   "priority": "P0",
+   "level": "unit",
+   "spec_hash": "sha256:6ed32c1bb783d0af",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/unit/framework/test_summary_report.py::test_flaky_is_listed_apart_from_passed",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.766812Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_summary_report.py::test_html_summary_escapes_and_lists_failures",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.768046Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_summary_report.py::test_markdown_summary_has_totals_and_error_descriptions",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0007,
+       "started_at": "2026-10-25T13:44:56.765404Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/unit/framework/test_summary_report.py::test_run_without_failures_says_so",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.0004,
+       "started_at": "2026-10-25T13:44:56.764256Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-001",
+   "title": "Conteo básico de palabras",
+   "priority": "P0",
+   "level": "e2e",
+   "spec_hash": "sha256:2de208f264d7b9e9",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_word_count[frase-es]",
+     "param_id": "frase-es",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.549,
+       "started_at": "2026-10-25T13:45:20.594835Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_word_count[pangrama-en]",
+     "param_id": "pangrama-en",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5122,
+       "started_at": "2026-10-25T13:46:05.259445Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_word_count[una-palabra]",
+     "param_id": "una-palabra",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5715,
+       "started_at": "2026-10-25T13:45:44.082319Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-002",
+   "title": "Conteo básico de caracteres",
+   "priority": "P0",
+   "level": "e2e",
+   "spec_hash": "sha256:b6a4ef1f622744dc",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_character_count[frase-es]",
+     "param_id": "frase-es",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.58,
+       "started_at": "2026-10-25T13:45:59.294318Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_character_count[pangrama-en]",
+     "param_id": "pangrama-en",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5485,
+       "started_at": "2026-10-25T13:45:11.181624Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_basic_character_count[una-palabra]",
+     "param_id": "una-palabra",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.6866,
+       "started_at": "2026-10-25T13:45:32.374338Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-003",
+   "title": "Top 3 de Keyword Density sin empates",
+   "priority": "P0",
+   "level": "e2e",
+   "spec_hash": "sha256:5aebfd12775c8351",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_top_three_keywords[agrupado]",
+     "param_id": "agrupado",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5675,
+       "started_at": "2026-10-25T13:45:29.342834Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_top_three_keywords[intercalado]",
+     "param_id": "intercalado",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5805,
+       "started_at": "2026-10-25T13:45:34.889463Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-004",
+   "title": "Texto de ejemplo del PDF en WordCounter",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:cfb2a14360e4dc89",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_pdf_example_text",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5583,
+       "started_at": "2026-10-25T13:45:47.112104Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-005",
+   "title": "Espacios adicionales, iniciales y finales",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:d2a0025ec26cf93a",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_extra_spaces[bordes-y-multiples]",
+     "param_id": "bordes-y-multiples",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.6003,
+       "started_at": "2026-10-25T13:45:02.782899Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_extra_spaces[doble-espacio]",
+     "param_id": "doble-espacio",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5035,
+       "started_at": "2026-10-25T13:45:52.010140Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-006",
+   "title": "Signos de puntuación",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:9aa56bb35bc41799",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_punctuation[guion-aislado]",
+     "param_id": "guion-aislado",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.4929,
+       "started_at": "2026-10-25T13:45:06.641506Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_punctuation[puntuacion]",
+     "param_id": "puntuacion",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5356,
+       "started_at": "2026-10-25T13:45:15.873470Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-007",
+   "title": "Mayúsculas y minúsculas en Keyword Density",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:ded8a9da828f1f33",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_keyword_density_is_case_insensitive",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.506,
+       "started_at": "2026-10-25T13:45:37.137781Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-008",
+   "title": "Actualización del contenido",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:bc5e7261ebe7da4e",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_counters_follow_content_updates",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 1.4215,
+       "started_at": "2026-10-25T13:46:02.138278Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-009",
+   "title": "Borrado total del texto",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:e91e53e04eb768c4",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_clearing_text_resets_counters",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.7841,
+       "started_at": "2026-10-25T13:45:56.703252Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-010",
+   "title": "Texto multilínea",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:6c3e7dcbd331662a",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_multiline_text",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5598,
+       "started_at": "2026-10-25T13:45:25.411437Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-011",
+   "title": "Empates en el top 3 de Keyword Density",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:e28a0dbe4cdaa3d8",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_ties_are_ordered_by_first_appearance",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5316,
+       "started_at": "2026-10-25T13:45:39.504791Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-012",
+   "title": "Acentos y ñ (texto en español)",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:ec6e32a47cf7d526",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_spanish_accents",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5596,
+       "started_at": "2026-10-25T13:45:49.317989Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-013",
+   "title": "Números, guiones y apóstrofes",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:cffd77fff31936ed",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_numbers_hyphens_and_apostrophes",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5405,
+       "started_at": "2026-10-25T13:45:23.076400Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-014",
+   "title": "Texto extenso",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:8f5c36016b3f9804",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_long_text",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.4172,
+       "started_at": "2026-10-25T13:45:41.686807Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-015",
+   "title": "Comportamiento por defecto de Keyword Density con stop words",
+   "priority": "P1",
+   "level": "e2e",
+   "spec_hash": "sha256:b2583a738dbdda13",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_keyword_density_default_filters[numeros]",
+     "param_id": "numeros",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.48,
+       "started_at": "2026-10-25T13:45:09.080337Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_keyword_density_default_filters[stop-words]",
+     "param_id": "stop-words",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5115,
+       "started_at": "2026-10-25T13:45:18.297249Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    },
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_keyword_density_default_filters[una-letra]",
+     "param_id": "una-letra",
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.5706,
+       "started_at": "2026-10-25T13:45:54.321256Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-016",
+   "title": "Emojis y caracteres fuera del BMP",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:beff805e3f407136",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_wordcounter.py::test_emoji_character_count_characterization",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 0.519,
+       "started_at": "2026-10-25T13:45:13.709919Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-017",
+   "title": "Reproducción BUG-WC-001: punto sin espacio",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:9b5f6ec3f614bc7b",
+   "known_defect": "BUG-WC-001",
+   "final_status": "FAIL",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_known_defects.py::test_word_count_and_keyword_density_agree_on_dot_without_space",
+     "param_id": null,
+     "final_status": "FAIL",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "failed",
+       "duration_s": 0.4827,
+       "started_at": "2026-10-25T13:46:20.033445Z",
+       "phase": "call",
+       "exception_type": "AssertionError",
+       "message": "Inconsistencia: el contador muestra 1 palabra(s) y Keyword Density suma 2 (['hola=1', 'mundo=1']) para 'hola.mundo'\nassert 1 == 2",
+       "category": "assertion",
+       "evidence": [
+        "evidence/TC-WC-017__default__a1.png",
+        "evidence/TC-WC-017__default__a1.html"
+       ]
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-018",
+   "title": "Reproducción BUG-WC-002: palabra formada solo por guiones",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:d98d8a183077497a",
+   "known_defect": "BUG-WC-002",
+   "final_status": "FAIL",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_known_defects.py::test_hyphen_only_token_is_not_a_keyword",
+     "param_id": null,
+     "final_status": "FAIL",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "failed",
+       "duration_s": 10.4944,
+       "started_at": "2026-10-25T13:46:07.719066Z",
+       "phase": "call",
+       "exception_type": "AssertionError",
+       "message": "Keyword Density para '---': esperado [], actual ['---=1']",
+       "category": "assertion",
+       "evidence": [
+        "evidence/TC-WC-018__default__a1.png",
+        "evidence/TC-WC-018__default__a1.html"
+       ]
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-019",
+   "title": "Reproducción BUG-WC-003: espacio no separable",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:cbfd1106f4295200",
+   "known_defect": "BUG-WC-003",
+   "final_status": "FAIL",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_known_defects.py::test_keyword_density_splits_on_non_breaking_space",
+     "param_id": null,
+     "final_status": "FAIL",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "failed",
+       "duration_s": 10.1487,
+       "started_at": "2026-10-25T13:46:22.611637Z",
+       "phase": "call",
+       "exception_type": "AssertionError",
+       "message": "Keyword Density para 'uno\\xa0dos': esperado ['uno=1', 'dos=1'], actual ['uno\\xa0dos=1']",
+       "category": "assertion",
+       "evidence": [
+        "evidence/TC-WC-019__default__a1.png",
+        "evidence/TC-WC-019__default__a1.html"
+       ]
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-WC-020",
+   "title": "Reproducción BUG-WC-004: emojis en caracteres",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:88fd4819b0253552",
+   "known_defect": "BUG-WC-004",
+   "final_status": "FAIL",
+   "executions": [
+    {
+     "nodeid": "tests/e2e/test_known_defects.py::test_each_emoji_counts_as_one_character",
+     "param_id": null,
+     "final_status": "FAIL",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "failed",
+       "duration_s": 10.142,
+       "started_at": "2026-10-25T13:46:34.551855Z",
+       "phase": "call",
+       "exception_type": "AssertionError",
+       "message": "Caracteres (panel Details) para 'hola 👋 mundo 🌎': esperado 14, actual 16",
+       "category": "assertion",
+       "evidence": [
+        "evidence/TC-WC-020__default__a1.png",
+        "evidence/TC-WC-020__default__a1.html"
+       ]
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  }
+ ],
+ "performance": [],
+ "summary": {
+  "specified": 43,
+  "executed": 43,
+  "passed": 39,
+  "flaky": 0,
+  "failed": 4,
+  "skipped": 0,
+  "blocked": 0,
+  "not_run": 0,
+  "attempts": 221,
+  "retries": 0,
+  "cases_with_retries": 0,
+  "flaky_rate": 0.0,
+  "first_attempt_pass_rate": 0.9069767441860465,
+  "final_pass_rate": 0.9069767441860465,
+  "duration_s": 108.57527,
+  "mean_case_duration_s": 1.1000395348837209,
+  "failures_by_category": {
+   "assertion": 4
+  }
+ },
+ "gate": {
+  "decision": "warn",
+  "reasons": [
+   "TC-WC-017 (P2) FAIL por defecto conocido BUG-WC-001 → warn",
+   "TC-WC-018 (P2) FAIL por defecto conocido BUG-WC-002 → warn",
+   "TC-WC-019 (P2) FAIL por defecto conocido BUG-WC-003 → warn",
+   "TC-WC-020 (P2) FAIL por defecto conocido BUG-WC-004 → warn"
+  ]
+ }
+}
