@@ -1,0 +1,272 @@
+{
+ "schema_version": 1,
+ "run": {
+  "run_id": "40364381568",
+  "run_attempt": 1,
+  "workflow": "performance",
+  "scope": "performance",
+  "trigger": "schedule",
+  "commit_sha": "8bb0747a924aae04e4a1c25b3f83cfad38af55bd",
+  "ref": "refs/heads/master",
+  "repository": "yoelalmiron1997/farmatodo-qa-test-engineering",
+  "run_url": "https://github.com/yoelalmiron1997/farmatodo-qa-test-engineering/actions/runs/40364381568",
+  "started_at": "2026-10-26T16:59:39.484029Z",
+  "finished_at": "2026-10-26T17:00:17.178572Z",
+  "random_seed": null,
+  "reruns_configured": 0
+ },
+ "environment": {
+  "kind": "github-actions",
+  "os": "ubuntu24",
+  "python": "3.12.3",
+  "pytest": "9.1.1",
+  "selenium": "4.51.0",
+  "browser": {
+   "name": "chrome",
+   "version": "155.0.8059.39",
+   "driver_version": "155.0.8059.39",
+   "headless": true,
+   "viewport": "1366x768"
+  },
+  "target_urls": [
+   "https://wordcounter.net/"
+  ]
+ },
+ "cases": [
+  {
+   "case_id": "TC-PERF-001",
+   "title": "Tiempo de navegación de WordCounter",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:239f1e2ca2b3b823",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/performance/test_performance.py::test_navigation_timing",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 30.0084,
+       "started_at": "2026-10-26T16:59:39.889022Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-PERF-002",
+   "title": "Tiempo de respuesta del contador",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:fa3eb264afd92e55",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/performance/test_performance.py::test_counter_update_latency",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 1.9544,
+       "started_at": "2026-10-26T17:00:11.466100Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  },
+  {
+   "case_id": "TC-PERF-003",
+   "title": "Tiempo de actualización de Keyword Density",
+   "priority": "P2",
+   "level": "e2e",
+   "spec_hash": "sha256:a5238cdc769cc500",
+   "known_defect": null,
+   "final_status": "PASS",
+   "executions": [
+    {
+     "nodeid": "tests/performance/test_performance.py::test_keyword_density_update_latency",
+     "param_id": null,
+     "final_status": "PASS",
+     "attempts": [
+      {
+       "n": 1,
+       "outcome": "passed",
+       "duration_s": 1.9484,
+       "started_at": "2026-10-26T17:00:15.117005Z",
+       "phase": "call",
+       "exception_type": null,
+       "message": null,
+       "category": null,
+       "evidence": []
+      }
+     ],
+     "blocked_reason": null
+    }
+   ]
+  }
+ ],
+ "performance": [
+  {
+   "case_id": "TC-PERF-001",
+   "series": "navigation_ttfb",
+   "unit": "ms",
+   "samples": [
+    85.1,
+    114.7,
+    128.0,
+    112.3,
+    186.2
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  },
+  {
+   "case_id": "TC-PERF-001",
+   "series": "navigation_dcl",
+   "unit": "ms",
+   "samples": [
+    305.9,
+    328.5,
+    423.5,
+    413.8,
+    819.1
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  },
+  {
+   "case_id": "TC-PERF-001",
+   "series": "navigation_load",
+   "unit": "ms",
+   "samples": [
+    1014.7,
+    876.7,
+    776.2,
+    962.9,
+    1383.4
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  },
+  {
+   "case_id": "TC-PERF-001",
+   "series": "editor_ready",
+   "unit": "ms",
+   "samples": [
+    1233.44,
+    1064.81,
+    996.61,
+    1165.56,
+    1820.13
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  },
+  {
+   "case_id": "TC-PERF-002",
+   "series": "end_to_end",
+   "unit": "ms",
+   "samples": [
+    321.94,
+    324.67,
+    316.79,
+    317.28,
+    313.48
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": 25.0
+  },
+  {
+   "case_id": "TC-PERF-002",
+   "series": "in_browser",
+   "unit": "ms",
+   "samples": [
+    303.3,
+    303.3,
+    303.2,
+    303.2,
+    303.3
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  },
+  {
+   "case_id": "TC-PERF-003",
+   "series": "end_to_end",
+   "unit": "ms",
+   "samples": [
+    322.83,
+    317.93,
+    319.17,
+    319.51,
+    316.76
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": 25.0
+  },
+  {
+   "case_id": "TC-PERF-003",
+   "series": "in_browser",
+   "unit": "ms",
+   "samples": [
+    304.4,
+    303.1,
+    303.2,
+    303.0,
+    303.3
+   ],
+   "invalid_samples": 0,
+   "warmup_discarded": 1,
+   "poll_resolution_ms": null
+  }
+ ],
+ "summary": {
+  "specified": 3,
+  "executed": 3,
+  "passed": 3,
+  "flaky": 0,
+  "failed": 0,
+  "skipped": 0,
+  "blocked": 0,
+  "not_run": 0,
+  "attempts": 3,
+  "retries": 0,
+  "cases_with_retries": 0,
+  "flaky_rate": 0.0,
+  "first_attempt_pass_rate": 1.0,
+  "final_pass_rate": 1.0,
+  "duration_s": 37.694543,
+  "mean_case_duration_s": 11.303733333333334,
+  "failures_by_category": {}
+ },
+ "gate": {
+  "decision": "pass",
+  "reasons": []
+ }
+}
